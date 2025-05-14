@@ -8,7 +8,7 @@ import Gem from "./pages/Gem";
 
 function App() {
   return (
-    <Router basename="/kevens-url">
+    <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/educationme " element={<StudyPage />} />
