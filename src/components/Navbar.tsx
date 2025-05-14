@@ -13,7 +13,7 @@ const Navbar = () => {
           href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=keven&to=kevenjq07@gmail.com"
           target="_blank"
         >
-          <div className="relative mr-5 hidden text-center px-4 pt-1 lg:text-white lg:block ">
+          <div className="relative mr-5 text-center px-4 pt-1 text-white ">
             <ul>
               <li>{chatsvg()}</li>
             </ul>

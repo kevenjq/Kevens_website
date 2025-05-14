@@ -61,8 +61,8 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="w-screen h-screen bg-gray-200 flex flex-col justify-start items-center border-t-white border-t-8">
-        <div className="relative flex flex-row items-center justify-center w-[80%] outline-2 hover:outline-white outline-transparent translate-x-3 h-120 py-60 lg:py-5 bg-amber-300 rounded-2xl -translate-y-40 md:-translate-y-50 mx-auto lg:w-[80%] lg:h-200 lg:-translate-y-20 ">
+      <div className="w-screen h-fit bg-gray-200 flex flex-col justify-start items-center border-t-white border-t-8">
+        <div className="relative flex flex-row items-center justify-center w-[80%] outline-2 hover:outline-white outline-transparent translate-x-3 h-[390px] md:h-[320px] py-20 lg:py-5 bg-amber-300 rounded-2xl mx-auto lg:w-[80%] lg:h-[70%] ">
           <h3 className="text-[14px] font-semibold text-left w-[70%] sm:text-1xl lg:text-2xl ">
             <span className="text-center block">Nice to meet you!</span>
             <br />I am a university student studying Software Engineering I am
@@ -81,8 +81,8 @@ const HomePage = () => {
           </h3>
         </div>
 
-        <div className=" h-[50%] w-[80%]  lg:h-[80%] lg:w-[80%] outline-2 hover:outline-white outline-transparent rounded-2xl -translate-y-40 translate-x-3 lg:-translate-y-10 mt-10">
-          <div className="flex justify-start items-center flex-col lg:flex-row rounded-2xl overflow-x-scroll snap-x gap-10 w-full h-full">
+        <div className=" h-[350px] w-[80%]  lg:h-[80%] lg:w-[80%] overflow-hidden outline-2 hover:outline-white outline-transparent rounded-2xl translate-x-3 my-10 overflow-y-scroll ">
+          <div className="flex justify-start items-center flex-col lg:flex-row rounded-2xl  lg:overflow-x-scroll snap-x gap-5 lg:w-full lg:h-full">
             <BoxCard
               title="Portfolio / Blog Website"
               image={reacttsx}
