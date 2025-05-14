@@ -48,7 +48,7 @@ const HomePage = () => {
           easy on the scroll...
         </p>
         <div className="flex flex-col justify-center items-center w-[90%] lg:items-start md:items-start h-fit lg:w-fit px-5 py-5 mx-18 my-40">
-          <h1 className="text-3xl font-bold text-yellow-950 w-[400px] text-center sm:w-[80%] md:w-[400px] md:text-left md:text-3xl lg:w-[600px] lg:text-left lg:text-4xl ">
+          <h1 className="text-[20px] font-bold text-yellow-950 text-center sm:w-[80%] md:w-[400px] md:text-left md:text-3xl lg:w-[600px] lg:text-left lg:text-4xl ">
             Hola! <br />
             Welcome to my website.
           </h1>
