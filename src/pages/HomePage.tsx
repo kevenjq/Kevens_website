@@ -63,7 +63,7 @@ const HomePage = () => {
 
       <div className="w-screen h-fit bg-gray-200 flex flex-col justify-start items-center border-t-white border-t-8">
         <div className="relative flex flex-row items-center justify-center w-[80%] outline-2 hover:outline-white outline-transparent translate-x-3 h-[390px] md:h-[320px] py-20 lg:py-5 bg-amber-300 rounded-2xl mx-auto lg:w-[80%] lg:h-[70%] ">
-          <h3 className="text-[14px] font-semibold text-left w-[70%] sm:text-1xl lg:text-2xl ">
+          <h3 className="text-[12px] font-semibold text-left w-[70%] sm:text-1xl lg:text-2xl ">
             <span className="text-center block">Nice to meet you!</span>
             <br />I am a university student studying Software Engineering I am
             beginning a my journey in Web development, as a sail towards full
