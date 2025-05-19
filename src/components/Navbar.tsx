@@ -3,7 +3,7 @@ import LOGO from "../assets/keven_logo.svg";
 
 const Navbar = () => {
   return (
-    <div className="fixed flex flex-col w-screen h-18 top-0 justify-center z-50 outline-2 hover:outline-cyan-400 outline-transparent">
+    <div className="fixed flex flex-col w-screen h-18 top-0 justify-center z-50 outline-2 hover:outline-cyan-400 outline-transparent shadow-lg">
       <nav className="w-full flex flex-row h-25 bg-gray-900 justify-between items-center">
         <div className="px-2 w-fit h-fit flex justify-center items-center">
           <img src={LOGO} className="mx-5 w-[99px] hover:-rotate-10" />

@@ -7,13 +7,26 @@ import Javaimg from "../assets/image.png";
 import reacttsx from "../assets/image copy.png";
 
 const HomePage = () => {
+  const scrollByAmount = (amount: number) => {
+    const container = document.querySelector(
+      ".scrollable-container"
+    ) as HTMLElement;
+    if (container) {
+      container.scrollBy({
+        top: amount, // vertical
+        left: 0, // set to amount if horizontal scroll
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <>
       <Navbar />
 
       <div className="fixed flex flow-col p-2 justify-between items-center bottom-5 left-5 w-fit h-auto z-10">
         <ul className="flex flex-col gap-5 justify-center items-center">
-          <li className="duration-500 hover:text-cyan-600">
+          <li className="duration-300 hover:text-cyan-600">
             <a
               href="https://www.canva.com/design/DAGnbV_AWvY/6Aao7IgAZe4xadbCND-8kA/edit?utm_content=DAGnbV_AWvY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
               target="_blank"
@@ -21,7 +34,7 @@ const HomePage = () => {
               {CVsvg()}
             </a>
           </li>
-          <li className="duration-500 ease-in-out hover:text-cyan-600">
+          <li className="duration-300 ease-in-out hover:text-cyan-600">
             <a
               href="https://www.instagram.com/jaffet_qc/?utm_source=ig_web_button_share_sheet"
               target="_blank"
@@ -30,12 +43,12 @@ const HomePage = () => {
             </a>
           </li>
 
-          <li className="duration-500 hover:text-cyan-600">
+          <li className="duration-300 hover:text-cyan-600">
             <a href="https://www.linkedin.com/in/kevenquevedo" target="_blank">
               {linkedInsvg()}
             </a>
           </li>
-          <li className="duration-500 hover:text-cyan-600">
+          <li className="duration-300 hover:text-cyan-600">
             <a href="https://github.com/kevenjq" target="_blank">
               {githubsvg()}
             </a>
@@ -62,62 +75,94 @@ const HomePage = () => {
       </div>
 
       <div className="w-screen h-fit bg-gray-200 flex flex-col justify-start items-center border-t-white border-t-8">
-        <div className="relative flex flex-row items-center justify-center w-[80%] outline-2 hover:outline-white outline-transparent translate-x-3 h-[390px] md:h-[320px] py-20 lg:py-5 bg-amber-300 rounded-2xl mx-auto lg:w-[80%] lg:h-[70%] ">
-          <h3 className="text-[12px] font-semibold text-left w-[70%] sm:text-1xl lg:text-2xl ">
+        <div className="relative flex flex-row items-center justify-center w-[80%] mt-10 lg:mt-0 outline-2 hover:outline-white outline-transparent translate-x-3 h-[390px] md:h-[320px] py-20 lg:py-5 bg-slate-700 lg:-translate-y-22 rounded-2xl mx-auto lg:w-[80%] lg:h-[70%] ">
+          <h3 className="text-[10px] font-semibold text-left w-[70%] sm:text-1xl lg:text-2xl text-gray-200">
             <span className="text-center block">Nice to meet you!</span>
-            <br />I am a university student studying Software Engineering I am
-            beginning a my journey in Web development, as a sail towards full
-            stack development.
-            <br />I am currently learning React and TypeScript, and I am excited
-            to apply my knowledge to real-world projects. I am also interested
-            in exploring other areas of software development, such as mobile app
-            development and cloud computing. I am always looking for new
-            challenges and opportunities to grow as a developer.
+            <br />I am a university student pursuing a degree in Software
+            Engineering, currently embarking on my journey into web development
+            as I work towards becoming a full-stack developer. I am presently
+            learning React and TypeScript and am eager to apply this knowledge
+            to real-world projects. <br />
+            <br />
+            Additionally, I have a strong interest in exploring other areas of
+            software development, including mobile application development and
+            cloud computing. I am continuously seeking new challenges and
+            opportunities to grow and improve as a developer.
             <br />
             <br />
-            <span className="text-white text-center block">
+            <span className="text-gray-200 text-center block">
               Take a look at my projects in Github posted below.
             </span>
           </h3>
         </div>
 
-        <div className=" h-[350px] w-[80%]  lg:h-[80%] lg:w-[80%] overflow-hidden outline-2 hover:outline-white outline-transparent rounded-2xl translate-x-3 my-10 overflow-y-scroll ">
-          <div className="flex justify-start items-center flex-col lg:flex-row rounded-2xl  lg:overflow-x-scroll snap-x gap-5 lg:w-full lg:h-full">
-            <BoxCard
-              title="Portfolio / Blog Website"
-              image={reacttsx}
-              date="On-going"
-              active={true}
-              githubURL="https://github.com/kevenjq"
-            />
-            <BoxCard
-              title="KCARE Website"
-              image={jobscrapperimg}
-              date="December 2022"
-              active={false}
-              githubURL="https://github.com/kevenjq/KCARE-Website.git"
-            />
-            <BoxCard
-              title="Face Recognition Application"
-              image={kivymd}
-              date="April 2023"
-              active={false}
-              githubURL="https://github.com/kevenjq/Face-Recognition.git"
-            />
-            <BoxCard
-              title="Job Scrapper Application"
-              image={jobscrapperimg}
-              date="December 2023"
-              active={false}
-              githubURL="https://github.com/kevenjq/Job-Scrapper.git"
-            />
-            <BoxCard
-              title="War Card Game"
-              image={Javaimg}
-              date="April 2022"
-              active={false}
-              githubURL="https://github.com/kevenjq/Face-Recognition.git"
-            />
+        <div className="relative w-[80%] h-[350px] lg:h-[80%] my-10 ">
+          {/* Scrollable content */}
+          <div className="flex justify-center h-full w-full overflow-y-scroll lg:overflow-x-scroll rounded-2xl outline-2 hover:outline-white outline-transparent">
+            <div className="flex lg:flex-row flex-col items-center justify-start w-full h-full snap-x ">
+              <BoxCard
+                title="Portfolio / Blog Website"
+                image={reacttsx}
+                date="On-going"
+                active={true}
+                githubURL="https://github.com/kevenjq/Kevens_website"
+              />
+              <BoxCard
+                title="KCARE Website"
+                image={jobscrapperimg}
+                date="December 2022"
+                active={false}
+                githubURL="https://github.com/kevenjq/KCARE-Website.git"
+              />
+              <BoxCard
+                title="Face Recognition Application"
+                image={kivymd}
+                date="April 2023"
+                active={false}
+                githubURL="https://github.com/kevenjq/Face-Recognition.git"
+              />
+              <BoxCard
+                title="Job Scrapper Application"
+                image={jobscrapperimg}
+                date="December 2023"
+                active={false}
+                githubURL="https://github.com/kevenjq/Job-Scrapper.git"
+              />
+              <BoxCard
+                title="War Card Game"
+                image={Javaimg}
+                date="April 2022"
+                active={false}
+                githubURL="https://github.com/kevenjq/Face-Recognition.git"
+              />
+            </div>
+          </div>
+
+          {/* Arrows Inside the Relative Container */}
+          {/* Top Arrow (Mobile) */}
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 transform lg:hidden z-10">
+            <button className="-rotate-90" onClick={() => scrollByAmount(-100)}>
+              {arrowsvg()}
+            </button>
+          </div>
+
+          {/* Bottom Arrow (Mobile) */}
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 transform lg:hidden z-10">
+            <button className="rotate-90" onClick={() => scrollByAmount(100)}>
+              {arrowsvg()}
+            </button>
+          </div>
+
+          {/* Left Arrow (Desktop) */}
+          <div className="absolute left-2 top-1/2 -translate-y-1/2 transform hidden lg:block z-10">
+            <button className="rotate-180" onClick={() => scrollByAmount(-100)}>
+              {arrowsvg()}
+            </button>
+          </div>
+
+          {/* Right Arrow (Desktop) */}
+          <div className="absolute right-2 top-1/2 -translate-y-1/2 transform hidden lg:block z-10">
+            <button onClick={() => scrollByAmount(100)}>{arrowsvg()}</button>
           </div>
         </div>
       </div>
@@ -216,6 +261,21 @@ const CVsvg = () => {
       viewBox="0 0 16 16"
     >
       <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0m2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755" />
+    </svg>
+  );
+};
+
+const arrowsvg = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      fill="currentColor"
+      className="bi bi-arrow-right-square-fill"
+      viewBox="0 0 16 16"
+    >
+      <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1" />
     </svg>
   );
 };
