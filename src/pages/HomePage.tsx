@@ -1,7 +1,7 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar/Navbar";
 
 import kivymd from "../assets/kivymd.png";
-import BoxCard from "../components/boxCard";
+import BoxCard from "../components/BoxCard/boxCard";
 import jobscrapperimg from "../assets/Screenshot 2025-05-13 at 19.02.24.png";
 import Javaimg from "../assets/image.png";
 import reacttsx from "../assets/image copy.png";
