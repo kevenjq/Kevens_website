@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+/* ===== Global Theme ===== */
+:root {
+    /* Background colors */
+    --color-bg-dark: #111827;
+    /* Tailwind gray-900 */
+    --color-bg-mid: #1f2937;
+    /* Tailwind gray-800 */
+    --color-bg-light: #374151;
+    /* Tailwind gray-700 */
+
+    /* Text colors */
+    --color-text-primary: #422006;
+    /* Tailwind yellow-950 */
+    --color-text-normal: #e5e7eb;
+    /* Tailwind gray-200 */
+}
+
+/* ===== Global App Styling ===== */
+body {
+    @apply bg-gray-900 text-gray-200;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-normal);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Optional — consistent container look */
+section,
+main,
+header,
+footer {
+    background-color: var(--color-bg-mid);
+    color: var(--color-text-normal);
+}
+
+/* Example for titles/headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-text-primary);
+}

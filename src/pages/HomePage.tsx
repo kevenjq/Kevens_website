@@ -76,7 +76,7 @@ const HomePage = () => {
 
       <div className="w-screen h-fit bg-gray-200 flex flex-col justify-start items-center border-t-white border-t-8">
         <div className="relative flex flex-row items-center justify-center w-[80%] mt-10 lg:mt-0 outline-2 hover:outline-white outline-transparent translate-x-3 h-[390px] md:h-[320px] py-20 lg:py-5 bg-slate-700 lg:-translate-y-22 rounded-2xl mx-auto lg:w-[80%] lg:h-[70%] ">
-          <h3 className="text-[10px] font-semibold text-left w-[70%] sm:text-1xl lg:text-2xl text-gray-200">
+          <p className="text-[10px] font-semibold text-left w-[70%] sm:text-1xl lg:text-2xl text-gray-200">
             <span className="text-center block">Nice to meet you!</span>
             <br />I am a university student pursuing a degree in Software
             Engineering, currently embarking on my journey into web development
@@ -93,7 +93,7 @@ const HomePage = () => {
             <span className="text-gray-200 text-center block">
               Take a look at my projects in Github posted below.
             </span>
-          </h3>
+          </p>
         </div>
 
         <div className="relative w-[80%] h-[350px] lg:h-[80%] my-10 ">
