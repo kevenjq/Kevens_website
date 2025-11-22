@@ -5,167 +5,55 @@ import BoxCard from "../components/BoxCard/boxCard";
 import jobscrapperimg from "../assets/Screenshot 2025-05-13 at 19.02.24.png";
 import Javaimg from "../assets/image.png";
 import reacttsx from "../assets/image copy.png";
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import styled from "styled-components";
+
+const Body = styled.div`
+  padding: 0px;
+  margin: 0px;
+`;
 
 const HomePage = () => {
-  const scrollByAmount = (amount: number) => {
-    const container = document.querySelector(
-      ".scrollable-container"
-    ) as HTMLElement;
-    if (container) {
-      container.scrollBy({
-        top: amount, // vertical
-        left: 0, // set to amount if horizontal scroll
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <>
       <Navbar />
+      <Body>
+        <div className="fixed flex flow-col p-2 justify-between items-center bottom-5 left-5 w-fit h-auto z-10">
+          <ul className="flex flex-col gap-5 justify-center items-center">
+            <li className="duration-300 hover:text-cyan-600">
+              <a
+                href="https://www.canva.com/design/DAGnbV_AWvY/6Aao7IgAZe4xadbCND-8kA/edit?utm_content=DAGnbV_AWvY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                target="_blank"
+              >
+                {CVsvg()}
+              </a>
+            </li>
+            <li className="duration-300 ease-in-out hover:text-cyan-600">
+              <a
+                href="https://www.instagram.com/jaffet_qc/?utm_source=ig_web_button_share_sheet"
+                target="_blank"
+              >
+                {instasvg()}
+              </a>
+            </li>
 
-      <div className="fixed flex flow-col p-2 justify-between items-center bottom-5 left-5 w-fit h-auto z-10">
-        <ul className="flex flex-col gap-5 justify-center items-center">
-          <li className="duration-300 hover:text-cyan-600">
-            <a
-              href="https://www.canva.com/design/DAGnbV_AWvY/6Aao7IgAZe4xadbCND-8kA/edit?utm_content=DAGnbV_AWvY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-              target="_blank"
-            >
-              {CVsvg()}
-            </a>
-          </li>
-          <li className="duration-300 ease-in-out hover:text-cyan-600">
-            <a
-              href="https://www.instagram.com/jaffet_qc/?utm_source=ig_web_button_share_sheet"
-              target="_blank"
-            >
-              {instasvg()}
-            </a>
-          </li>
-
-          <li className="duration-300 hover:text-cyan-600">
-            <a href="https://www.linkedin.com/in/kevenquevedo" target="_blank">
-              {linkedInsvg()}
-            </a>
-          </li>
-          <li className="duration-300 hover:text-cyan-600">
-            <a href="https://github.com/kevenjq" target="_blank">
-              {githubsvg()}
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div className="w-screen h-screen mt-16 bg-gray-200 flex flex-row justify-start items-center z-20">
-        <p className="fixed top-20 left-[42%] lg:left-[45%] -z-10 font-extrabold">
-          easy on the scroll...
-        </p>
-        <div className="flex flex-col justify-center items-center w-[90%] lg:items-start md:items-start h-fit lg:w-fit px-5 py-5 mx-18 my-40">
-          <h1 className="text-[20px] font-bold text-yellow-950 text-center sm:w-[80%] md:w-[400px] md:text-left md:text-3xl lg:w-[600px] lg:text-left lg:text-4xl ">
-            Hola! <br />
-            Welcome to my website.
-          </h1>
-          <p className="text-lg text-left text-yellow-950 mt-10 md:text-left lg:text-left">
-            Keven Quevedo - 2005
-          </p>
+            <li className="duration-300 hover:text-cyan-600">
+              <a
+                href="https://www.linkedin.com/in/kevenquevedo"
+                target="_blank"
+              >
+                {linkedInsvg()}
+              </a>
+            </li>
+            <li className="duration-300 hover:text-cyan-600">
+              <a href="https://github.com/kevenjq" target="_blank">
+                {githubsvg()}
+              </a>
+            </li>
+          </ul>
         </div>
-        <div className="flex justify-center w-1 h-1 invisible mt-23.5 -translate-x-50 md:w-80 md:h-100  md:-translate-x-25 md:visible lg:w-140 lg:h-160 lg:-translate-x-44 lg:visible">
-          {treeBGsvg()}
-        </div>
-      </div>
-
-      <div className="w-screen h-fit bg-gray-200 flex flex-col justify-start items-center border-t-white border-t-8">
-        <div className="relative flex flex-row items-center justify-center w-[80%] mt-10 lg:mt-0 outline-2 hover:outline-white outline-transparent translate-x-3 h-[390px] md:h-[320px] py-20 lg:py-5 bg-slate-700 lg:-translate-y-22 rounded-2xl mx-auto lg:w-[80%] lg:h-[70%] ">
-          <p className="text-[10px] font-semibold text-left w-[70%] sm:text-1xl lg:text-2xl text-gray-200">
-            <span className="text-center block">Nice to meet you!</span>
-            <br />I am a university student pursuing a degree in Software
-            Engineering, currently embarking on my journey into web development
-            as I work towards becoming a full-stack developer. I am presently
-            learning React and TypeScript and am eager to apply this knowledge
-            to real-world projects. <br />
-            <br />
-            Additionally, I have a strong interest in exploring other areas of
-            software development, including mobile application development and
-            cloud computing. I am continuously seeking new challenges and
-            opportunities to grow and improve as a developer.
-            <br />
-            <br />
-            <span className="text-gray-200 text-center block">
-              Take a look at my projects in Github posted below.
-            </span>
-          </p>
-        </div>
-
-        <div className="relative w-[80%] h-[350px] lg:h-[80%] my-10 ">
-          {/* Scrollable content */}
-          <div className="flex justify-center h-full w-full overflow-y-scroll lg:overflow-x-scroll rounded-2xl outline-2 hover:outline-white outline-transparent">
-            <div className="flex lg:flex-row flex-col items-center justify-start w-full h-full snap-x ">
-              <BoxCard
-                title="Portfolio / Blog Website"
-                image={reacttsx}
-                date="On-going"
-                active={true}
-                githubURL="https://github.com/kevenjq/Kevens_website"
-              />
-              <BoxCard
-                title="KCARE Website"
-                image={jobscrapperimg}
-                date="December 2022"
-                active={false}
-                githubURL="https://github.com/kevenjq/KCARE-Website.git"
-              />
-              <BoxCard
-                title="Face Recognition Application"
-                image={kivymd}
-                date="April 2023"
-                active={false}
-                githubURL="https://github.com/kevenjq/Face-Recognition.git"
-              />
-              <BoxCard
-                title="Job Scrapper Application"
-                image={jobscrapperimg}
-                date="December 2023"
-                active={false}
-                githubURL="https://github.com/kevenjq/Job-Scrapper.git"
-              />
-              <BoxCard
-                title="War Card Game"
-                image={Javaimg}
-                date="April 2022"
-                active={false}
-                githubURL="https://github.com/kevenjq/Face-Recognition.git"
-              />
-            </div>
-          </div>
-
-          {/* Arrows Inside the Relative Container */}
-          {/* Top Arrow (Mobile) */}
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 transform lg:hidden z-10">
-            <button className="-rotate-90" onClick={() => scrollByAmount(-100)}>
-              {arrowsvg()}
-            </button>
-          </div>
-
-          {/* Bottom Arrow (Mobile) */}
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 transform lg:hidden z-10">
-            <button className="rotate-90" onClick={() => scrollByAmount(100)}>
-              {arrowsvg()}
-            </button>
-          </div>
-
-          {/* Left Arrow (Desktop) */}
-          <div className="absolute left-2 top-1/2 -translate-y-1/2 transform hidden lg:block z-10">
-            <button className="rotate-180" onClick={() => scrollByAmount(-100)}>
-              {arrowsvg()}
-            </button>
-          </div>
-
-          {/* Right Arrow (Desktop) */}
-          <div className="absolute right-2 top-1/2 -translate-y-1/2 transform hidden lg:block z-10">
-            <button onClick={() => scrollByAmount(100)}>{arrowsvg()}</button>
-          </div>
-        </div>
-      </div>
+        <DndController/>
+      </Body>
     </>
   );
 };
