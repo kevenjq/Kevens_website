@@ -7,7 +7,7 @@
     /* Tailwind gray-900 */
     --color-bg-mid: #1f2937;
     /* Tailwind gray-800 */
-    --color-bg-light: #374151;
+    --color-bg-light: #bec0c2;
     /* Tailwind gray-700 */
 
     /* Text colors */
@@ -20,7 +20,7 @@
 /* ===== Global App Styling ===== */
 body {
     @apply bg-gray-900 text-gray-200;
-    background-color: var(--color-bg-dark);
+    background-color: var(--color-bg-light);
     color: var(--color-text-normal);
     font-family: 'Inter', sans-serif;
 }

@@ -2,13 +2,13 @@
 import React from "react";
 
 export const sortDnd = <T,>(
-  list: T[],
-  startIndex: number, 
+  items: T[],
+  startIndex: number,
   endIndex: number
 ): T[] => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
+  const newArr = [...items];
+  const [removed] = newArr.splice(startIndex, 1);
+  newArr.splice(endIndex, 0, removed);
 
-  return result;
+  return newArr;
 };
