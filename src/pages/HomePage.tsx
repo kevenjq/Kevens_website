@@ -1,11 +1,63 @@
 import Navbar from "../components/NavBar/Navbar";
 import DndController from "../components/DndController/DndController";
+import { useState } from "react";
+import { DragDropContext, DropResult } from "@hello-pangea/dnd";
+import { sortDnd } from "../../shared/sortDND/sortDnd";
 
 const HomePage = () => {
+  const [visible, setVisible] = useState(true);
+  const [items, setItems] = useState(["Animal", "Midevil", "Futuro"]);
+
+  // const ActivateStyle = () => {};
+
+  const OpenController = () => {
+    return (
+      <svg
+        onClick={() => setVisible(true)}
+        xmlns="http://www.w3.org/2000/svg"
+        width="36"
+        height="36"
+        fill="currentColor"
+        className="bi bi-chevron-bar-left"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0M4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5"
+        />
+      </svg>
+    );
+  };
+
+  const CloseController = () => {
+    return (
+      <svg
+        onClick={() => setVisible(false)}
+        xmlns="http://www.w3.org/2000/svg"
+        width="36"
+        height="36"
+        fill="currentColor"
+        className="bi bi-chevron-bar-right"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0M11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5"
+        />
+      </svg>
+    );
+  };
+  const indexSort = (result: DropResult) => {
+    const { source, destination } = result;
+    if (!destination) return;
+
+    setItems((prev) => sortDnd(prev, source.index, destination.index));
+  };
+
   return (
-    <body>
+    <div className="relative">
       <Navbar />
-      <div className="fixed flex flow-col p-2 justify-between items-center bottom-5 left-5 w-fit h-auto">
+      <div className="fixed flex flex-col p-2 bg-[var(--color-bg-mid)] justify-between items-center bottom-5 left-5 w-fit h-auto border-2 rounded-[10px]">
         <ul className="flex flex-col gap-5 justify-center items-center">
           <li className="duration-300 hover:text-cyan-600">
             <a
@@ -36,10 +88,18 @@ const HomePage = () => {
           </li>
         </ul>
       </div>
-      <DndController />
+
+      <div className="absolute flex right-0 top-20 items-center">
+        {visible ? <CloseController /> : <OpenController />}
+        <DragDropContext onDragEnd={indexSort}>
+          <div className="border-2 h-13 rounded-b-2xl">
+            <DndController visible={visible} items={items} />
+          </div>
+        </DragDropContext>
+      </div>
 
       <section id=""></section>
-    </body>
+    </div>
   );
 };
 

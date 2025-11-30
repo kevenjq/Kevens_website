@@ -1,45 +1,90 @@
 @import "tailwindcss";
 
-/* ===== Global Theme ===== */
+/* ============================
+   Base setup (do not change)
+   ============================ */
 :root {
-    /* Background colors */
-    --color-bg-dark: #111827;
-    /* Tailwind gray-900 */
-    --color-bg-mid: #1f2937;
-    /* Tailwind gray-800 */
-    --color-bg-light: #bec0c2;
-    /* Tailwind gray-700 */
+    --bg: #ffffff;
+    --bg-light: #f2f2f2;
+    --bg-dark: #e5e5e5;
 
-    /* Text colors */
-    --color-text-primary: #422006;
-    /* Tailwind yellow-950 */
-    --color-text-normal: #e5e7eb;
-    /* Tailwind gray-200 */
+    --text-main: #000000;
+    --text-title: #111111;
+    --text-muted: #555555;
 }
 
-/* ===== Global App Styling ===== */
+/* ============================
+   THEME 1
+   ============================ */
+.theme-one {
+    --bg: #1e1e2f;
+    --bg-light: #2a2a3f;
+    --bg-dark: #141425;
+
+    --text-main: #e4e4e4;
+    --text-title: #ffffff;
+    --text-muted: #b7b7b7;
+}
+
+/* ============================
+   THEME 2
+   ============================ */
+.theme-two {
+    --bg: #f8efe6;
+    --bg-light: #fff6e9;
+    --bg-dark: #e9dccf;
+
+    --text-main: #4b3d3d;
+    --text-title: #2c1e1e;
+    --text-muted: #7a6a6a;
+}
+
+/* ============================
+   THEME 3
+   ============================ */
+.theme-three {
+    --bg: #0b2d39;
+    --bg-light: #154454;
+    --bg-dark: #082028;
+
+    --text-main: #d6f2ff;
+    --text-title: #ffffff;
+    --text-muted: #9ac5d1;
+}
+
+/* ============================
+   Global usage
+   ============================ */
 body {
-    @apply bg-gray-900 text-gray-200;
-    background-color: var(--color-bg-light);
-    color: var(--color-text-normal);
-    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Optional — consistent container look */
-section,
-main,
-header,
-footer {
-    background-color: var(--color-bg-mid);
-    color: var(--color-text-normal);
-}
-
-/* Example for titles/headings */
 h1,
 h2,
 h3,
 h4,
-h5,
-h6 {
-    color: var(--color-text-primary);
+h5 {
+    color: var(--text-title);
+}
+
+p {
+    color: var(--text-main);
+}
+
+.muted {
+    color: var(--text-muted);
+}
+
+.section {
+    background-color: var(--bg-light);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.card {
+    background-color: var(--bg-dark);
+    padding: 1rem;
+    border-radius: 10px;
 }

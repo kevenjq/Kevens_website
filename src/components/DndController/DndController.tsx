@@ -1,35 +1,23 @@
-import {
-  DragDropContext,
-  DropResult,
-  Droppable,
-  Draggable,
-} from "@hello-pangea/dnd";
-import { sortDnd } from "../../../shared/sortDND/sortDnd";
-import { useState } from "react";
+import { Droppable, Draggable } from "@hello-pangea/dnd";
 import styled from "styled-components";
 
-const ItemsContainer = styled.div`
-  margin: 0px;
-  position: fixed;
-  right: 10px;
-  top: 30%;
-  div {
-    gap: 20px;
-    padding: 7px;
-    hover: {
-      background-color: var(--color-cyan-600);
-    }
+const ItemsContainer = styled.div<{ $visible: boolean }>`
+  display: ${(props) => (props.$visible ? "block" : "none")};
+  width: 25%;
+  min-width: 200px;
+  > div {
+    padding: 6px;
   }
 `;
 
-const ElementButton = styled.div`
+const ElementButton = styled.div<{ $active: boolean }>`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   border-radius: 8px;
   margin-bottom: 7px;
   font-size: 25px;
   width: auto;
-  background-color: var(--color-bg-mid);
+  cursor: grab;
   h1 {
     color: var(--color-text-normal);
   }
@@ -38,49 +26,44 @@ const ElementButton = styled.div`
   }
 `;
 
-const DndController = () => {
-  const [items, setItems] = useState(["Animal", "Midevil", "Futuro"]);
+type DndControllerProps = {
+  visible: boolean;
+  items: string[];
+};
+
+const DndController = ({ visible, items }: DndControllerProps) => {
   const ItemStructure = (item: string, active: boolean) => {
     return (
-      <ElementButton>
+      <ElementButton $active={active}>
         {active ? <HandIndex /> : <HandIndexThumb />}
         <h1>{item}</h1>
       </ElementButton>
     );
   };
 
-  const indexSort = (result: DropResult) => {
-    const { source, destination } = result;
-    if (!destination) return;
-
-    setItems((prev) => sortDnd(prev, source.index, destination.index));
-  };
-
   return (
-    <DragDropContext onDragEnd={indexSort}>
-      <ItemsContainer>
-        <Droppable droppableId="list">
-          {(provided) => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
-              {items.map((item, index) => (
-                <Draggable key={item} draggableId={item} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      {ItemStructure(item, snapshot.isDragging)}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </ItemsContainer>
-    </DragDropContext>
+    <ItemsContainer $visible={visible}>
+      <Droppable droppableId="list">
+        {(provided) => (
+          <div {...provided.droppableProps} ref={provided.innerRef}>
+            {items.map((item, index) => (
+              <Draggable key={item} draggableId={item} index={index}>
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    {ItemStructure(item, snapshot.isDragging)}
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </ItemsContainer>
   );
 };
 
