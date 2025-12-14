@@ -3,17 +3,16 @@ import LOGO from "../../assets/keven_logo.svg";
 
 const Navbar = () => {
   return (
-    <div className="fixed flex flex-col w-screen h-18 top-0 justify-center  outline-2 hover:outline-cyan-400 outline-transparent shadow-lg">
-      <nav className="w-full flex flex-row h-25 bg-gray-900 justify-between items-center">
+    <div className="fixed top-0 flex flex-col w-screen h-18 justify-center outline-2 hover:var-(--outline) outline-transparent shadow-lg">
+      <nav className="w-full flex flex-row h-25 bg-[var(--bg-light)] justify-between items-center">
         <div className="px-2 w-fit h-fit flex justify-center items-center">
           <img src={LOGO} className="mx-5 w-[99px] hover:-rotate-10" />
         </div>
-
         <a
-          href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=keven&to=kevenjq07@gmail.com"
+          href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=kevenjq07@gmail.com"
           target="_blank"
         >
-          <div className="relative mr-5 text-center px-4 pt-1 text-white ">
+          <div className="relative mr-5 text-center px-4 pt-1 ">
             <ul>
               <li>{chatsvg()}</li>
             </ul>

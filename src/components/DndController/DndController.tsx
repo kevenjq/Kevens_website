@@ -6,35 +6,58 @@ const ItemsContainer = styled.div<{ $visible: boolean }>`
   width: 25%;
   min-width: 200px;
   > div {
-    padding: 6px;
+    padding: 3px 6px;
   }
 `;
 
-const ElementButton = styled.div<{ $active: boolean }>`
+const ElementButton = styled.div<{ $active: boolean; $visible: boolean }>`
   display: flex;
   justify-content: space-between;
+  user-select: none;
   border-radius: 8px;
   margin-bottom: 7px;
   font-size: 25px;
   width: auto;
   cursor: grab;
+  padding: 0 2px 0 2px;
+
+  &:hover svg {
+    transform: rotate(-20deg);
+  }
+
   h1 {
     color: var(--color-text-normal);
   }
   svg {
     align-self: center;
   }
+  background-color: ${({ $active }) =>
+    $active ? "var(--onDrag)" : "transparent"};
+
+  border: ${({ $active }) =>
+    $active ? "2px solid var(--text-title)" : "2px solid transparent"};
+
+  background-color: ${({ $visible }) =>
+    $visible ? "var(--bg-light)" : "transparent"};
+
+
 `;
+
+type ThemeItem = {
+  id: string;
+  label: string;
+  themeKey: string;
+};
 
 type DndControllerProps = {
   visible: boolean;
-  items: string[];
+  items: ThemeItem[];
 };
 
 const DndController = ({ visible, items }: DndControllerProps) => {
   const ItemStructure = (item: string, active: boolean) => {
     return (
-      <ElementButton $active={active}>
+      <ElementButton $active={active}  $visible={visible}>
         {active ? <HandIndex /> : <HandIndexThumb />}
         <h1>{item}</h1>
       </ElementButton>
@@ -47,14 +70,14 @@ const DndController = ({ visible, items }: DndControllerProps) => {
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {items.map((item, index) => (
-              <Draggable key={item} draggableId={item} index={index}>
+              <Draggable key={item.id} draggableId={item.id} index={index}>
                 {(provided, snapshot) => (
                   <div
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                   >
-                    {ItemStructure(item, snapshot.isDragging)}
+                    {ItemStructure(item.label, snapshot.isDragging)}
                   </div>
                 )}
               </Draggable>
@@ -74,7 +97,7 @@ const HandIndex = () => {
       width="25"
       height="25"
       fill="var(--color-text-normal)"
-      className="bi bi-hand-index"
+      className="bi bi-hand-index fill-[var(--svg-main)] -rotate-20"
       viewBox="0 0 16 16"
     >
       <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025" />
@@ -89,7 +112,7 @@ const HandIndexThumb = () => {
       width="32"
       height="32"
       fill="var(--color-text-normal)"
-      className="bi bi-hand-index-thumb hover:-rotate-20"
+      className="bi bi-hand-index-thumb fill-[var(--svg-main)]"
       viewBox="0 0 16 16"
     >
       <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025" />

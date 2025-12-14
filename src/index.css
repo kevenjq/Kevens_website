@@ -11,12 +11,13 @@
     --text-main: #000000;
     --text-title: #111111;
     --text-muted: #555555;
+    --svg-main: #f2f2f2
 }
 
 /* ============================
    THEME 1
    ============================ */
-.theme-one {
+.animal-theme {
     --bg: #1e1e2f;
     --bg-light: #2a2a3f;
     --bg-dark: #141425;
@@ -24,12 +25,15 @@
     --text-main: #e4e4e4;
     --text-title: #ffffff;
     --text-muted: #b7b7b7;
+
+    --onDrag: #4f4f67;
+    --outline: #04D9FF;
 }
 
 /* ============================
    THEME 2
    ============================ */
-.theme-two {
+.medieval-theme {
     --bg: #f8efe6;
     --bg-light: #fff6e9;
     --bg-dark: #e9dccf;
@@ -37,12 +41,16 @@
     --text-main: #4b3d3d;
     --text-title: #2c1e1e;
     --text-muted: #7a6a6a;
+
+    --svg-main: #4b3d3d;
+    --onDrag: #fff6e9;
+    --outline: #464646;
 }
 
 /* ============================
    THEME 3
    ============================ */
-.theme-three {
+.futuro-theme {
     --bg: #0b2d39;
     --bg-light: #154454;
     --bg-dark: #082028;
@@ -50,6 +58,9 @@
     --text-main: #d6f2ff;
     --text-title: #ffffff;
     --text-muted: #9ac5d1;
+
+    --onDrag: #154454;
+    --outline: #edffbc;
 }
 
 /* ============================
