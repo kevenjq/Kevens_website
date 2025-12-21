@@ -4,7 +4,7 @@ const ContactList = () => {
   return (
     <div className="fixed flex flex-col p-2 bg-[var(--color-bg-mid)] justify-between items-center bottom-5 left-5 w-fit h-auto border-2 rounded-[10px]">
       <ul className="flex flex-col gap-5 justify-center items-center">
-        <li className="duration-300 hover:text-cyan-600">
+        <li className="duration-300 hover:text-[var(--hovering)]">
           <a
             href="https://www.canva.com/design/DAGnbV_AWvY/6Aao7IgAZe4xadbCND-8kA/edit?utm_content=DAGnbV_AWvY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
             target="_blank"
@@ -12,23 +12,23 @@ const ContactList = () => {
             {CVsvg()}
           </a>
         </li>
-        <li className="duration-300 ease-in-out hover:text-cyan-600">
+        <li className="duration-300 ease-in-out hover:text-[var(--hovering)]">
           <a
             href="https://www.instagram.com/jaffet_qc/?utm_source=ig_web_button_share_sheet"
             target="_blank"
           >
-            {instasvg()}
+            {instaSvg()}
           </a>
         </li>
 
-        <li className="duration-300 hover:text-cyan-600">
+        <li className="duration-300 hover:text-[var(--hovering)]">
           <a href="https://www.linkedin.com/in/kevenquevedo" target="_blank">
-            {linkedInsvg()}
+            {linkedInSvg()}
           </a>
         </li>
-        <li className="duration-300 hover:text-cyan-600">
+        <li className="duration-300 hover:text-[var(--hovering)]">
           <a href="https://github.com/kevenjq" target="_blank">
-            {githubsvg()}
+            {githubSvg()}
           </a>
         </li>
       </ul>
@@ -54,7 +54,7 @@ const CVsvg = () => {
   );
 };
 
-function instasvg() {
+function instaSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ function instasvg() {
   );
 }
 
-function linkedInsvg() {
+function linkedInSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@ function linkedInsvg() {
   );
 }
 
-function githubsvg() {
+function githubSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

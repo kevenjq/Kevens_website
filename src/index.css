@@ -18,9 +18,9 @@
    THEME 1
    ============================ */
 .animal-theme {
-    --bg: #1e1e2f;
-    --bg-light: #2a2a3f;
-    --bg-dark: #141425;
+    --bg: #1e2f1f;
+    --bg-light: #476041;
+    --bg-dark: #142518;
 
     --text-main: #e4e4e4;
     --text-title: #ffffff;
@@ -28,6 +28,7 @@
 
     --onDrag: #4f4f67;
     --outline: #04D9FF;
+    --hovering: #4a624b;
 }
 
 /* ============================
@@ -39,28 +40,30 @@
     --bg-dark: #e9dccf;
 
     --text-main: #4b3d3d;
-    --text-title: #2c1e1e;
+    --text-title: #2c1e1e; 
     --text-muted: #7a6a6a;
 
     --svg-main: #4b3d3d;
     --onDrag: #fff6e9;
     --outline: #464646;
+    --hovering: #c1b6ac;
 }
 
 /* ============================
    THEME 3
    ============================ */
 .futuro-theme {
-    --bg: #0b2d39;
+    --bg: #3e545c;
     --bg-light: #154454;
     --bg-dark: #082028;
 
     --text-main: #d6f2ff;
-    --text-title: #ffffff;
+    --text-title: #b6d5de;
     --text-muted: #9ac5d1;
 
     --onDrag: #154454;
     --outline: #edffbc;
+    --hovering: #3e7f96;
 }
 
 /* ============================

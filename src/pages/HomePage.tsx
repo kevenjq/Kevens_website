@@ -12,8 +12,15 @@ type ThemeItem = {
   themeKey: "animal-theme" | "medieval-theme" | "futuro-theme";
 };
 
-const Intro = styled.section`
+const IntroCard = styled.div`
   margin-top: 95px;
+  margin-left: 40px;
+
+  border: 2px solid black;
+  max-width: 40%;
+  min-width: 20%;
+
+  padding: 5px 10px 5px 10px;
 `;
 
 const HomePage = () => {
@@ -92,11 +99,18 @@ const HomePage = () => {
 
       <ContactList />
 
-      <Intro>
+      <IntroCard>
         {/*Here Hola will be switching ot the countries langs that i have been to*/}
-        <h1>Hola, Welcome to Keven's space!</h1>
-        <p></p>
-      </Intro>
+
+        <h1 className="font-extrabold">
+          Hola,
+          <br /> Welcome to Keven's space!
+        </h1>
+        <span className="text-end">
+          <p>2005 Ecuadorian</p>
+        </span>
+      </IntroCard>
+
     </div>
   );
 };
