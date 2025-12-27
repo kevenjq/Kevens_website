@@ -1,32 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Coming+Soon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
+
+/*Default font*/
+@import url('https://fonts.googleapis.com/css2?family=Cousine&display=swap');
+
 @import "tailwindcss";
 
 /* ============================
    Base setup (do not change)
    ============================ */
 :root {
-    --bg: #ffffff;
-    --bg-light: #f2f2f2;
-    --bg-dark: #e5e5e5;
+    --bg: #2c2d2c;
+    --bg-light: #879669;
+    --bg-dark: #142518;
+    
+    --font-main: "Cousine", monospace;
 
-    --text-main: #000000;
-    --text-title: #111111;
-    --text-muted: #555555;
-    --svg-main: #f2f2f2
+    --text-main: #e4e4e4;
+    --text-title: #ffffff;
+    --text-muted: #b7b7b7;
+    
+    --onDrag: #000000;
+    --outline: #04D9FF;
+    --hovering: #c49a7c;
+
+    --rounded: 10px;
+    
 }
 
 /* ============================
    THEME 1
    ============================ */
 .animal-theme {
-    --bg: #1e2f1f;
-    --bg-light: #476041;
-    --bg-dark: #142518;
+    --bg: #366b7b;
+    --bg-light: #adb541;
+    --bg-dark: #000000;
 
+    --font-main: "Barrio", system-ui;
     --text-main: #e4e4e4;
     --text-title: #ffffff;
     --text-muted: #b7b7b7;
 
-    --onDrag: #4f4f67;
+    --onDrag: #c1cb08;
     --outline: #04D9FF;
     --hovering: #4a624b;
 }
@@ -39,6 +55,7 @@
     --bg-light: #fff6e9;
     --bg-dark: #e9dccf;
 
+    --font-main: "Playfair Display", serif;
     --text-main: #4b3d3d;
     --text-title: #2c1e1e; 
     --text-muted: #7a6a6a;
@@ -57,6 +74,7 @@
     --bg-light: #154454;
     --bg-dark: #082028;
 
+    --font-main: "BBH Bartle", sans-serif;
     --text-main: #d6f2ff;
     --text-title: #b6d5de;
     --text-muted: #9ac5d1;
@@ -64,6 +82,8 @@
     --onDrag: #154454;
     --outline: #edffbc;
     --hovering: #3e7f96;
+
+    --rounded: 1px;
 }
 
 /* ============================
@@ -72,33 +92,81 @@
 body {
     background-color: var(--bg);
     color: var(--text-main);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.5s ease, color 0.3s ease;
+
 }
 
-h1,
+h1{
+    color: var(--text-title);
+    transition: color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-main);
+    font-size: 1in;
+}
+
 h2,
 h3,
 h4,
 h5 {
     color: var(--text-title);
+    transition: color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-main);
 }
 
 p {
     color: var(--text-main);
+    font-weight: 200;
+    font-family: var(--font-main);
 }
 
 .muted {
     color: var(--text-muted);
+    font: var(--regular-text);
 }
 
 .section {
     background-color: var(--bg-light);
     padding: 1rem;
     border-radius: 8px;
+    font-family: var(--font-main);
+
 }
 
 .card {
     background-color: var(--bg-dark);
     padding: 1rem;
     border-radius: 10px;
+    font-family: var(--font-main);
+}
+
+#theme-svg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 9990;
+    pointer-events: none;
+    display: block;
+    transform: translateY(100%);
+    overflow: hidden;
+}
+
+#theme-svg-container svg {
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: fill;
+}
+
+.draggable-item-is-dragging {
+    z-index: 10000 !important;
+    position: fixed !important;
+    background-color: transparent;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dnd-controller{
+    font-family: "Cousine", monospace;
+    font-weight: 600;
 }

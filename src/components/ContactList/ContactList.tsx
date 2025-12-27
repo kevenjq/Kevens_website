@@ -1,8 +1,33 @@
 import React from "react";
+import styled from "styled-components";
+
+const Container = styled.div`
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 5px 8px 5px;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  border: 2px;
+  rounded: var(--rounded);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  outline: 1px solid rgba(255, 255, 255, 0.52);
+
+  &:hover {
+    outline: 1px solid var(--outline);
+  }
+`;
 
 const ContactList = () => {
   return (
-    <div className="fixed flex flex-col p-2 bg-[var(--color-bg-mid)] justify-between items-center bottom-5 left-5 w-fit h-auto border-2 rounded-[10px]">
+    <Container >
       <ul className="flex flex-col gap-5 justify-center items-center">
         <li className="duration-300 hover:text-[var(--hovering)]">
           <a
@@ -32,7 +57,7 @@ const ContactList = () => {
           </a>
         </li>
       </ul>
-    </div>
+    </Container>
   );
 };
 

@@ -39,8 +39,6 @@ const ElementButton = styled.div<{ $active: boolean; $visible: boolean }>`
 
   background-color: ${({ $visible }) =>
     $visible ? "var(--bg-light)" : "transparent"};
-
-
 `;
 
 type ThemeItem = {
@@ -57,9 +55,9 @@ type DndControllerProps = {
 const DndController = ({ visible, items }: DndControllerProps) => {
   const ItemStructure = (item: string, active: boolean) => {
     return (
-      <ElementButton $active={active}  $visible={visible}>
+      <ElementButton $active={active} $visible={visible}>
         {active ? <HandIndex /> : <HandIndexThumb />}
-        <h1>{item}</h1>
+        <p className="dnd-controller">{item}</p>
       </ElementButton>
     );
   };
@@ -76,6 +74,15 @@ const DndController = ({ visible, items }: DndControllerProps) => {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
+                    className={`your-normal-classes ${
+                      snapshot.isDragging ? "draggable-item-is-dragging" : ""
+                    }`}
+                    style={{
+                      ...provided.draggableProps.style,
+                      // This ensures the item keeps its coordinates while dragging
+                      left: "auto",
+                      top: "auto",
+                    }}
                   >
                     {ItemStructure(item.label, snapshot.isDragging)}
                   </div>
