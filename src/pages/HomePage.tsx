@@ -3,10 +3,10 @@ import styled from "styled-components";
 import ContactList from "../components/ContactList/ContactList";
 
 const IntroCard = styled.div`
-  margin-top: 95px;
-  margin-left: 40px;
-  border: 2px solid black;
-  max-width: 40%;
+  margin-top: 125px;
+  margin-left: 60px;
+
+  max-width: 75%;
   min-width: 20%;
   padding: 5px 10px 5px 10px;
 `;
@@ -23,7 +23,7 @@ const HomePage = () => {
       <IntroCard>
         <h1 className="">
           Hola,
-          <br /> Welcome to Keven's space!
+          <br /> Welcome to my space!
         </h1>
         <span className="text-end">
           <p>2005 Ecuadorian</p>

@@ -45,7 +45,7 @@ const Nav = styled.nav`
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const [items, setItems] = useState<ThemeItem[]>([
-    { id: "1", label: "Animals", themeKey: "animal-theme" },
+    { id: "1", label: "idk", themeKey: "animal-theme" },
     { id: "2", label: "Medieval", themeKey: "medieval-theme" },
     { id: "3", label: "Futuro", themeKey: "futuro-theme" },
   ]);
@@ -109,6 +109,24 @@ const Navbar = () => {
       });
     }
   }, [items, currentTheme]);
+
+  // run on enter web
+  useEffect(() => {
+    const activeTheme = items[0]?.themeKey;
+    if (!activeTheme) return;
+
+    if (activeTheme) {
+      playThemeTransition(() => {
+        document.body.classList.remove(
+          "animal-theme",
+          "medieval-theme",
+          "futuro-theme"
+        );
+        document.body.classList.add(activeTheme);
+        setCurrentTheme(activeTheme);
+      });
+    }
+  }, []);
 
   // Controller components
   const OpenController = () => (

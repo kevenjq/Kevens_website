@@ -2,7 +2,7 @@ import Navbar from "../components/NavBar/Navbar";
 
 const AboutMe = () => {
   return (
-    <div className="min-h-screen bg-gray-200 flex flex-col justify-center items-center px-4">
+    <div className="min-h-screen  flex flex-col justify-center items-center px-4">
       <Navbar />
 
       <div className="w-full max-w-4xl border-t-4 border-black mb-12" />
@@ -14,13 +14,7 @@ const AboutMe = () => {
         </div>
 
         <div className="text-center md:text-left text-base font-normal md:w-2/3">
-          <p>
-            I am a 20 year old student living in Berlin, I love traveling since
-            I was one year old. I have been gifted with an amazing family where
-            we have travelled to many countries. I grew up in China for most of
-            my life, finished high school and A levels in London and now I am
-            pursuing my bachelors in Berlin, Germany.
-          </p>
+          <p>kevenkevenkev nekevnkevnek nekvneknvkenvke</p>
         </div>
       </div>
 

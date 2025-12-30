@@ -5,6 +5,7 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import BlogPage from "./pages/BlogPage";
 import Gem from "./pages/Gem";
+import Fourofour from "./pages/Fourofour";
 
 import OverlayTransition from "./assets/overls.svg?react";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/Posts" element={<BlogPage />} />
 
           <Route path="/hidden@goofy->you" element={<Gem />} />
+          <Route path="/404" element={<Fourofour/>} />
         </Routes>
       </Router>
     </>
