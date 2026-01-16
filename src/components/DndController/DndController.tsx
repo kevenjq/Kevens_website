@@ -3,10 +3,9 @@ import styled from "styled-components";
 
 const ItemsContainer = styled.div<{ $visible: boolean }>`
   display: ${(props) => (props.$visible ? "block" : "none")};
-  width: 25%;
-  min-width: 200px;
+  width: 15rem;
   > div {
-    padding: 3px 6px;
+    padding: 2.5px 6px;
   }
 `;
 
@@ -16,7 +15,7 @@ const ElementButton = styled.div<{ $active: boolean; $visible: boolean }>`
   user-select: none;
   border-radius: 8px;
   margin-bottom: 7px;
-  font-size: 25px;
+  font-size: 1.6rem;
   width: auto;
   cursor: grab;
   padding: 0 2px 0 2px;
@@ -101,8 +100,8 @@ const HandIndex = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="25"
+      width="1rem"
+      height="1rem"
       fill="var(--color-text-normal)"
       className="bi bi-hand-index fill-[var(--svg-main)] -rotate-20"
       viewBox="0 0 16 16"
@@ -116,8 +115,8 @@ const HandIndexThumb = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="32"
-      height="32"
+      width="2rem"
+      height="2rem"
       fill="var(--color-text-normal)"
       className="bi bi-hand-index-thumb fill-[var(--svg-main)]"
       viewBox="0 0 16 16"
