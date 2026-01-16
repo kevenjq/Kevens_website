@@ -28,7 +28,7 @@ function App() {
           <Route path="/Posts" element={<BlogPage />} />
 
           <Route path="/hidden@goofy->you" element={<Gem />} />
-          <Route path="/404" element={<Fourofour/>} />
+          <Route path="/404" element={<Fourofour />} />
         </Routes>
       </Router>
     </>
