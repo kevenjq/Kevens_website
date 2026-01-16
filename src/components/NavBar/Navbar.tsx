@@ -13,41 +13,43 @@ type ThemeItem = {
   themeKey: "animal-theme" | "medieval-theme" | "futuro-theme";
 };
 
-//background-color: var(--bg-light);
 const NavbarContainer = styled.div`
   position: fixed;
   top: 15px;
   z-index: 9999;
   display: flex;
   width: 100vw;
-  height: 75px;
+  height: 5.2rem;
   justify-content: space-between;
   padding: 0 5px 0 20px;
 `;
+
+// background: rgba(255, 255, 255, 0.15);
+//   border-radius: 16px;
+//   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+//   backdrop-filter: blur(9.5px);
+//   -webkit-backdrop-filter: blur(9.5px);
 
 const Nav = styled.nav`
   width: 95vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
+  background: var(--bg-dark);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.5px);
-  -webkit-backdrop-filter: blur(9.5px);
-  outline: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: var(--rounded);
 
   &:hover {
-    outline: 1px solid var(--outline);
+    outline: 2px solid var(--outline);
   }
 `;
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const [items, setItems] = useState<ThemeItem[]>([
-    { id: "1", label: "idk", themeKey: "animal-theme" },
-    { id: "2", label: "Medieval", themeKey: "medieval-theme" },
-    { id: "3", label: "Futuro", themeKey: "futuro-theme" },
+    { id: "1", label: "Futuro", themeKey: "futuro-theme" },
+    { id: "2", label: "idk", themeKey: "animal-theme" },
+    { id: "3", label: "Medieval", themeKey: "medieval-theme" },
   ]);
 
   const [currentTheme, setCurrentTheme] = useState(items[0].themeKey);
@@ -133,8 +135,8 @@ const Navbar = () => {
     <svg
       onClick={() => setVisible(true)}
       xmlns="http://www.w3.org/2000/svg"
-      width="36"
-      height="36"
+      width="3rem"
+      height="3rem"
       fill="currentColor"
       className="bi bi-chevron-bar-left"
       viewBox="0 0 16 16"
@@ -150,8 +152,8 @@ const Navbar = () => {
     <svg
       onClick={() => setVisible(false)}
       xmlns="http://www.w3.org/2000/svg"
-      width="36"
-      height="36"
+      width="3rem"
+      height="3rem"
       fill="currentColor"
       className="bi bi-chevron-bar-right"
       viewBox="0 0 16 16"
@@ -175,7 +177,7 @@ const Navbar = () => {
       <NavbarContainer>
         <Nav>
           <div className="px-2 w-fit h-fit flex justify-center items-center">
-            <img src={LOGO} className="mx-5 w-[99px] hover:-rotate-10" />
+            <img src={LOGO} className="mx-5 w-[7.8rem] hover:-rotate-10" />
           </div>
           <a
             href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=kevenjq07@gmail.com"
@@ -192,7 +194,7 @@ const Navbar = () => {
           {visible ? <CloseController /> : <OpenController />}
 
           <DragDropContext onDragEnd={indexSort}>
-            <div className="border-2 h-13 rounded-b-2xl bg-white/10 backdrop-blur-sm">
+            <div className="border-[0.15rem] h-[3.35rem] rounded-b-2xl">
               <DndController visible={visible} items={items} />
             </div>
           </DragDropContext>
@@ -208,8 +210,8 @@ function chatsvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="35"
-      height="35"
+      width="3rem"
+      height="3rem"
       fill="currentColor"
       className="bi bi-envelope-at"
       viewBox="0 0 16 16"
