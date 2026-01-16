@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gabriela&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+
 /*Default font*/
 @import url('https://fonts.googleapis.com/css2?family=Cousine&display=swap');
 
@@ -12,39 +14,95 @@
    ============================ */
 :root {
     --bg: #2c2d2c;
-    --bg-light: #879669;
-    --bg-dark: #787694;
+    --bg-light: #2c2d2c;
+    --bg-dark: #2c2d2c;
     
     --font-main: "Cousine", monospace;
 
-    --text-main: #e4e4e4;
-    --text-title: #ffffff;
-    --text-muted: #b7b7b7;
+    --text-main: #2c2d2c;
+    --text-title: #2c2d2c;
+    --text-muted: #2c2d2c;
+    --text-changer: #2c2d2c;
+    --text-p: #2c2d2c;
+    --body-items-color: #2c2d2c;
     
-    --onDrag: #879669;
-    --outline: #04D9FF;
-    --hovering: #c49a7c;
+    --onDrag: #d18b29;
+    --outline: #2c2d2c;
+    --hovering: #2c2d2c;
 
-    --rounded: 10px;
+    --button: #2c2d2c;
+    --hov-button: #2c2d2c;
     
+    --rounded: 5px;
+    
+}
+
+/* =========================
+   Global Responsive Scale
+   ========================= */
+
+/* Base (xs – phones) */
+html {
+    font-size: 5px;
+}
+
+/* sm – large phones */
+@media (min-width: 480px) {
+    html {
+        font-size: 8px;
+    }
+}
+
+/* md – tablets */
+@media (min-width: 768px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+/* lg – desktops */
+@media (min-width: 1024px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+/* xl – large screens (optional) */
+@media (min-width: 1440px) {
+    html {
+        font-size: 16px;
+    }
 }
 
 /* ============================
    THEME 1
    ============================ */
 .animal-theme {
-    --bg: #366b7b;
-    --bg-light: #adb541;
-    --bg-dark: #000000;
+    --bg: #5b9a3b;
+    --bg-light: #31ca78;
+    --bg-dark: #095a0e;
 
-    --font-main: "Barrio", system-ui;
-    --text-main: #e4e4e4;
-    --text-title: #ffffff;
+    --font-title: "Barrio", system-ui;
+    --font-main: monospace;
+
+    --text-main: #d2c4c4;
+    --text-title: #323232;
     --text-muted: #b7b7b7;
+    --text-changer: #eeeeee;
+    --text-p: #2f3435;
+
+    --body-items-color: #cccccb;
 
     --onDrag: #e9f23e;
-    --outline: #04D9FF;
+    --outline: #ffb004;
     --hovering: #4a624b;
+
+    --button: #d98250;
+    --hov-button: #c1ad1a;
+    --button-color: #8a0a0a;
+
+    --rounded: 20px;
+    --h1-font: 7rem;
 }
 
 /* ============================
@@ -53,37 +111,56 @@
 .medieval-theme {
     --bg: #f8efe6;
     --bg-light: #fff6e9;
-    --bg-dark: #e9dccf;
+    --bg-dark: #442e18;
 
-    --font-main: "Gabriela", serif;
+    --font-title: "Gabriela", serif;
+    --font-main: "Macondo", cursive;
     --text-main: #4b3d3d;
-    --text-title: #2c1e1e; 
-    --text-muted: #7a6a6a;
+    --text-title: #2c1e1e;
+    --text-changer: #373838;
+    --text-p: #000000;
+    --body-items-color: #cccccb;
 
     --svg-main: #4b3d3d;
     --onDrag: #fff6e9;
     --outline: #464646;
     --hovering: #c1b6ac;
+
+    --button: #c5bc9b;
+    --hov-button: #8b702d;
+    --button-color: #262626;
+
+    --rounded: 12px;
+    --h1-font: 7rem;
 }
 
 /* ============================
    THEME 3
    ============================ */
 .futuro-theme {
-    --bg: #3e545c;
+    --bg: #7397a4;
     --bg-light: #154454;
     --bg-dark: #082028;
 
-    --font-main: "BBH Bartle", sans-serif;
+    --font-title: "BBH Bartle", sans-serif;
+    --font-main: monospace;
     --text-main: #d6f2ff;
     --text-title: #b6d5de;
     --text-muted: #9ac5d1;
+    --text-changer: #4d888c;
+    --text-p: #daf7ff;
+    --body-items-color: #cccccb;
 
     --onDrag: #154454;
     --outline: #edffbc;
     --hovering: #3e7f96;
 
-    --rounded: 1px;
+    --button: #95c2d2;
+    --hov-button: #28dfdc;
+    --button-color: #000000;
+
+    --rounded: 5px;
+    --h1-font: 6rem;
 }
 
 /* ============================
@@ -92,16 +169,15 @@
 body {
     user-select: none;
     background-color: var(--bg);
-    color: var(--text-main);
-    transition: background-color 0.5s ease, color 0.3s ease;
+    color: var(--body-items-color);
+    /* transition: background-color 0.5s ease, color 0.3s ease; */
 
 }
 
 h1{
     color: var(--text-title);
     transition: color 0.3s ease, color 0.3s ease;
-    font-family: var(--font-main);
-    font-size: 1in;
+    font-family: var(--font-title);
 }
 
 h2,
@@ -109,33 +185,44 @@ h3,
 h4,
 h5 {
     color: var(--text-title);
-    font-family: var(--font-main);
+    font-family: var(--font-title);
 }
 
 p {
-    color: var(--text-main);
-    font-weight: 200;
+    color: var(--text-p);
     font-family: var(--font-main);
 }
 
-.muted {
-    color: var(--text-muted);
-    font: var(--regular-text);
+
+.button{
+    border: none;
+    border-radius: var(--rounded);
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    color: var(--button-color);
+    background-color: var(--button);
+    transition: border-color 0.2s ease;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    font-family: var(--font-title);
+    
+}
+.button:after {
+    content: '';
+    height: 0;
+    width: 100%;
+    background-color: var(--hov-button);
+    border-radius: var(--rounded);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    transition: 110ms ease-in-out;
 }
 
-.section {
-    background-color: var(--bg-light);
-    padding: 1rem;
-    border-radius: 8px;
-    font-family: var(--font-main);
-
-}
-
-.card {
-    background-color: var(--bg-dark);
-    padding: 1rem;
-    border-radius: 10px;
-    font-family: var(--font-main);
+.button:hover::after{
+    height: 100%;
 }
 
 #theme-svg-container {
