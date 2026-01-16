@@ -1,5 +1,10 @@
-
 import styled from "styled-components";
+
+// background: rgba(255, 255, 255, 0.15);
+//   border-radius: 16px;
+//   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+//   backdrop-filter: blur(9.5px);
+//   -webkit-backdrop-filter: blur(9.5px);
 
 const Container = styled.div`
   position: fixed;
@@ -8,26 +13,23 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 8px 5px 8px 5px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: auto;
+  height: 12rem;
   border: 2px;
   rounded: var(--rounded);
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
+  background: var(--bg-dark);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.5px);
-  -webkit-backdrop-filter: blur(9.5px);
-  outline: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 16px;
 
   &:hover {
-    outline: 1px solid var(--outline);
+    outline: 2px solid var(--outline);
   }
 `;
 
 const ContactList = () => {
   return (
-    <Container >
+    <Container>
       <ul className="flex flex-col gap-5 justify-center items-center">
         <li className="duration-300 hover:text-[var(--hovering)]">
           <a
@@ -62,7 +64,6 @@ const ContactList = () => {
 };
 
 export default ContactList;
-
 
 const CVsvg = () => {
   return (
