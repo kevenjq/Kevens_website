@@ -14,11 +14,11 @@ const ElementButton = styled.div<{ $active: boolean; $visible: boolean }>`
   justify-content: space-between;
   user-select: none;
   border-radius: 8px;
-  margin-bottom: 7px;
+  margin-bottom: 0.7rem;
   font-size: 1.6rem;
   width: auto;
   cursor: grab;
-  padding: 0 2px 0 2px;
+  padding: 0 0.2rem 0 0.2rem;
 
   &:hover svg {
     transform: rotate(-20deg);
@@ -30,14 +30,20 @@ const ElementButton = styled.div<{ $active: boolean; $visible: boolean }>`
   svg {
     align-self: center;
   }
-  background-color: ${({ $active }) =>
-    $active ? "var(--onDrag)" : "transparent"};
 
-  border: ${({ $active }) =>
-    $active ? "2px solid var(--text-title)" : "2px solid transparent"};
+  background-color: transparent;
+  border: none;
 
-  background-color: ${({ $visible }) =>
-    $visible ? "var(--bg-light)" : "transparent"};
+  ${(props) =>
+    props.$active &&
+    `
+    background-color: var(--onDrag);
+    color: var(--onDrag);
+    border: 2px solid var(--text-title);
+    
+    `}
+
+  color: ${({ $visible }) => ($visible ? "var(--bg-light)" : "transparent")};
 `;
 
 type ThemeItem = {
