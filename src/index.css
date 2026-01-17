@@ -43,13 +43,13 @@
 
 /* Base (xs – phones) */
 html {
-    font-size: 5px;
+    font-size: 4px;
 }
 
 /* sm – large phones */
 @media (min-width: 480px) {
     html {
-        font-size: 8px;
+        font-size: 7px;
     }
 }
 
@@ -67,7 +67,7 @@ html {
     }
 }
 
-/* xl – large screens (optional) */
+/* xl – large screens */
 @media (min-width: 1440px) {
     html {
         font-size: 16px;
@@ -148,10 +148,10 @@ html {
     --text-title: #b6d5de;
     --text-muted: #9ac5d1;
     --text-changer: #4d888c;
-    --text-p: #daf7ff;
+    --text-p: #313a3c;
     --body-items-color: #cccccb;
 
-    --onDrag: #154454;
+    --onDrag: #ffffff;
     --outline: #edffbc;
     --hovering: #3e7f96;
 
@@ -167,11 +167,17 @@ html {
    Global usage
    ============================ */
 body {
-    user-select: none;
+    /* user-select: none; */
+    
     background-color: var(--bg);
     color: var(--body-items-color);
     /* transition: background-color 0.5s ease, color 0.3s ease; */
 
+}
+
+::selection {
+    background: var(--outline);
+    color: inherit;
 }
 
 h1{
@@ -185,7 +191,7 @@ h3,
 h4,
 h5 {
     color: var(--text-title);
-    font-family: var(--font-title);
+    font-family: var(--font-main);
 }
 
 p {
