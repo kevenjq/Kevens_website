@@ -19,7 +19,7 @@ const NavbarContainer = styled.div`
   z-index: 9999;
   display: flex;
   width: 100vw;
-  height: 5.2rem;
+  height: 5rem;
   justify-content: space-between;
   padding: 0 5px 0 20px;
 `;
@@ -173,34 +173,32 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      <NavbarContainer>
-        <Nav>
-          <div className="px-2 w-fit h-fit flex justify-center items-center">
-            <img src={LOGO} className="mx-5 w-[7.8rem] hover:-rotate-10" />
-          </div>
-          <a
-            href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=kevenjq07@gmail.com"
-            target="_blank"
-          >
-            <div className="relative mr-5 text-center px-4 pt-1 ">
-              <ul>
-                <li>{chatsvg()}</li>
-              </ul>
-            </div>
-          </a>
-        </Nav>
-        <div className="flex items-center justify-end">
-          {visible ? <CloseController /> : <OpenController />}
-
-          <DragDropContext onDragEnd={indexSort}>
-            <div className="border-[0.15rem] h-[3.35rem] rounded-b-2xl">
-              <DndController visible={visible} items={items} />
-            </div>
-          </DragDropContext>
+    <NavbarContainer>
+      <Nav>
+        <div className="px-2 w-fit h-fit flex justify-center items-center">
+          <img src={LOGO} className="mx-5 w-[7.8rem] hover:-rotate-10" />
         </div>
-      </NavbarContainer>
-    </>
+        <a
+          href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=kevenjq07@gmail.com"
+          target="_blank"
+        >
+          <div className="relative mr-5 text-center px-4 pt-1 ">
+            <ul>
+              <li>{chatsvg()}</li>
+            </ul>
+          </div>
+        </a>
+      </Nav>
+      <div className="flex items-center justify-end">
+        {visible ? <CloseController /> : <OpenController />}
+
+        <DragDropContext onDragEnd={indexSort}>
+          <div className="border-[0.15rem] h-[3.35rem] rounded-b-2xl">
+            <DndController visible={visible} items={items} />
+          </div>
+        </DragDropContext>
+      </div>
+    </NavbarContainer>
   );
 };
 
