@@ -30,7 +30,11 @@ const Container = styled.div`
 const ContactList = () => {
   return (
     <Container>
-      <ul className="flex flex-col gap-5 justify-center items-center">
+      {/*
+      idea is to have shown on hover or maybe
+        instead on a time limit in the beginning?
+      */}
+      <ul className="flex flex-col gap-[1rem] justify-center items-center">
         <li className="duration-300 hover:text-[var(--hovering)]">
           <a
             href="https://www.canva.com/design/DAGnbV_AWvY/6Aao7IgAZe4xadbCND-8kA/edit?utm_content=DAGnbV_AWvY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
@@ -69,8 +73,8 @@ const CVsvg = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="28"
-      height="28"
+      width="2rem"
+      height="2rem"
       fill="currentColor"
       className="bi bi-file-earmark-person-fill"
       viewBox="0 0 16 16"
@@ -84,8 +88,8 @@ function instaSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="25"
+      width="2rem"
+      height="2rem"
       fill="currentColor"
       className="bi bi-instagram"
       viewBox="0 0 16 16"
@@ -99,8 +103,8 @@ function linkedInSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="25"
+      width="2rem"
+      height="2rem"
       fill="currentColor"
       className="bi bi-linkedin"
       viewBox="0 0 16 16"
@@ -114,8 +118,8 @@ function githubSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="25"
+      width="2rem"
+      height="2rem"
       fill="currentColor"
       className="bi bi-github"
       viewBox="0 0 16 16"
