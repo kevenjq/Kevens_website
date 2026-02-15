@@ -1,7 +1,7 @@
 import DndController from "../DndController/DndController";
 import { useEffect, useState } from "react";
 import { DragDropContext, DropResult } from "@hello-pangea/dnd";
-import { sortDnd } from "../../../shared/sortDND/sortDnd";
+import { sortDnd } from "../../shared/sortDND/sortDnd";
 import { gsap } from "gsap";
 
 import LOGO from "../../assets/keven_logo.svg";
@@ -18,20 +18,15 @@ const NavbarContainer = styled.div`
   top: 15px;
   z-index: 9999;
   display: flex;
-  width: 100vw;
+  align-items: center;
+  width: 100%;
   height: 5rem;
   justify-content: space-between;
   padding: 0 5px 0 20px;
 `;
 
-// background: rgba(255, 255, 255, 0.15);
-//   border-radius: 16px;
-//   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-//   backdrop-filter: blur(9.5px);
-//   -webkit-backdrop-filter: blur(9.5px);
-
 const Nav = styled.nav`
-  width: 95vw;
+  width: 90dvw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,47 +53,20 @@ const Navbar = () => {
   const playThemeTransition = (onMidway: () => void) => {
     if (animating) return;
     setAnimation(true);
-
     const overlay = document.getElementById("theme-svg-container");
     if (!overlay) return;
-
-    const tl = gsap.timeline({
-      onComplete: () => setAnimation(false),
-    });
-
-    // 1. Ensure it starts at the bottom
+    const tl = gsap.timeline({ onComplete: () => setAnimation(false) });
     tl.set(overlay, { y: "100%" });
-
-    // 2. Slide UP to cover screen
-    tl.to(overlay, {
-      y: "0%",
-      scale: 1,
-      duration: 1,
-      ease: "power2.inOut",
-    });
-
-    // 3. Change the theme while screen is covered
+    tl.to(overlay, { y: "0%", scale: 1, duration: 1, ease: "power2.inOut" });
     tl.call(onMidway);
-
-    // 4. Brief pause to ensure theme color registers
     tl.to({}, { duration: 0.1 });
-
-    // 5. Slide UP and OUT (exit through the top)
-    tl.to(overlay, {
-      y: "-100%",
-      duration: 0.8,
-      ease: "power2.inOut",
-    });
-
-    // 6. Reset position for next time (instantly)
+    tl.to(overlay, { y: "-100%", duration: 0.8, ease: "power2.inOut" });
     tl.set(overlay, { y: "100%" });
   };
 
-  // main useEffect for all transitions
   useEffect(() => {
     const activeTheme = items[0]?.themeKey;
     if (!activeTheme) return;
-
     if (activeTheme !== currentTheme) {
       playThemeTransition(() => {
         document.body.classList.remove(
@@ -106,17 +74,16 @@ const Navbar = () => {
           "medieval-theme",
           "futuro-theme"
         );
+        setVisible(false);
         document.body.classList.add(activeTheme);
         setCurrentTheme(activeTheme);
       });
     }
   }, [items, currentTheme]);
 
-  // run on enter web
   useEffect(() => {
     const activeTheme = items[0]?.themeKey;
     if (!activeTheme) return;
-
     if (activeTheme) {
       playThemeTransition(() => {
         document.body.classList.remove(
@@ -130,41 +97,37 @@ const Navbar = () => {
     }
   }, []);
 
-  // Controller components
-  const OpenController = () => (
+  //controllers themes
+  const Settings = () => (
     <svg
       onClick={() => setVisible(true)}
       xmlns="http://www.w3.org/2000/svg"
-      width="3rem"
-      height="3rem"
-      fill="currentColor"
-      className="bi bi-chevron-bar-left"
+      width="4rem"
+      height="4rem"
+      fill="var(--body-items-color)"
+      className="bi bi-sliders p-3"
       viewBox="0 0 16 16"
     >
       <path
-        fillRule="evenodd"
-        d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0M4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5"
+        fill-rule="evenodd"
+        d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"
       />
     </svg>
   );
 
-  const CloseController = () => (
+  const CloseSettings = () => (
     <svg
       onClick={() => setVisible(false)}
       xmlns="http://www.w3.org/2000/svg"
-      width="3rem"
-      height="3rem"
-      fill="currentColor"
-      className="bi bi-chevron-bar-right"
+      width="5rem"
+      height="5rem"
+      fill="var(--body-items-color)"
+      className="bi bi-x p-3"
       viewBox="0 0 16 16"
     >
-      <path
-        fillRule="evenodd"
-        d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0M11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5"
-      />
+      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
     </svg>
   );
-  // --- ---
 
   const indexSort = (result: DropResult) => {
     const { source, destination } = result;
@@ -173,32 +136,34 @@ const Navbar = () => {
   };
 
   return (
-    <NavbarContainer>
-      <Nav>
-        <div className="px-2 w-fit h-fit flex justify-center items-center">
-          <img src={LOGO} className="mx-5 w-[7.8rem] hover:-rotate-10" />
-        </div>
-        <a
-          href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=kevenjq07@gmail.com"
-          target="_blank"
-        >
-          <div className="relative mr-5 text-center px-4 pt-1 ">
-            <ul>
-              <li>{chatsvg()}</li>
-            </ul>
+    <DragDropContext onDragEnd={indexSort}>
+      <NavbarContainer>
+        <Nav>
+          <div className="px-2 w-fit h-fit flex justify-center items-center">
+            <a href="/">
+              <img src={LOGO} className="mx-5 w-[7.8rem] hover:-rotate-10" />
+            </a>
           </div>
-        </a>
-      </Nav>
-      <div className="flex items-center justify-end">
-        {visible ? <CloseController /> : <OpenController />}
+          <ul className="flex flex-row justify-around text-center px-4 pt-1 items-center w-[6rem]">
+            <li>
+              <a
+                href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=kevenjq07@gmail.com"
+                target="_blank"
+              >
+                <div className="text-center">{chatsvg()}</div>
+              </a>
+            </li>
+          </ul>
+        </Nav>
 
-        <DragDropContext onDragEnd={indexSort}>
-          <div className="border-[0.15rem] h-[3.35rem] rounded-b-2xl">
-            <DndController visible={visible} items={items} />
-          </div>
-        </DragDropContext>
-      </div>
-    </NavbarContainer>
+        <div>
+          {/* {visible ? <CloseController /> : <OpenController />} */}
+          {visible ? <CloseSettings /> : <Settings />}
+
+          <DndController visible={visible} items={items} />
+        </div>
+      </NavbarContainer>
+    </DragDropContext>
   );
 };
 
@@ -210,7 +175,7 @@ function chatsvg() {
       xmlns="http://www.w3.org/2000/svg"
       width="3rem"
       height="3rem"
-      fill="currentColor"
+      fill="var(--body-items-color)"
       className="bi bi-envelope-at"
       viewBox="0 0 16 16"
     >
@@ -219,3 +184,38 @@ function chatsvg() {
     </svg>
   );
 }
+
+// Controllers
+// const OpenController = () => (
+//   <svg
+//     onClick={() => setVisible(true)}
+//     xmlns="http://www.w3.org/2000/svg"
+//     width="3rem"
+//     height="3rem"
+//     fill="var(--body-items-color)"
+//     className="bi bi-chevron-bar-left"
+//     viewBox="0 0 16 16"
+//   >
+//     <path
+//       fillRule="evenodd"
+//       d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0M4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5"
+//     />
+//   </svg>
+// );
+
+// const CloseController = () => (
+//   <svg
+//     onClick={() => setVisible(false)}
+//     xmlns="http://www.w3.org/2000/svg"
+//     width="3rem"
+//     height="3rem"
+//     fill="var(--body-items-color)"
+//     className="bi bi-chevron-bar-right"
+//     viewBox="0 0 16 16"
+//   >
+//     <path
+//       fillRule="evenodd"
+//       d="M4.146 3.646a.5.5 0 0 0 0 .708L7.793 8l-3.647 3.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708 0M11.5 1a.5.5 0 0 1 .5.5v13a.5.5 0 0 1-1 0v-13a.5.5 0 0 1 .5-.5"
+//     />
+//   </svg>
+// );

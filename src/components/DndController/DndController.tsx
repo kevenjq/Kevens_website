@@ -2,9 +2,26 @@ import { Droppable, Draggable } from "@hello-pangea/dnd";
 import styled from "styled-components";
 
 const ItemsContainer = styled.div<{ $visible: boolean }>`
-  display: ${(props) => (props.$visible ? "block" : "none")};
-  width: 15rem;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.21);
+  border-radius: var(--rounded);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+  border: 1px solid rgba(255, 255, 255, 0.53);
+
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: ${(props) => (props.$visible ? "flex" : "none")};
+  flex-direction: row;
+  justify-content: end;
+  width: 100%;
+  height: 90%;
+
   > div {
+    margin: auto;
+    width: 60%;
     padding: 2.5px 6px;
   }
 `;
@@ -12,13 +29,16 @@ const ItemsContainer = styled.div<{ $visible: boolean }>`
 const ElementButton = styled.div<{ $active: boolean; $visible: boolean }>`
   display: flex;
   justify-content: space-between;
+  justify-self: center;
+  align-items: center;
   user-select: none;
-  border-radius: 8px;
-  margin-bottom: 0.7rem;
-  font-size: 1.6rem;
-  width: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-size: var(--p-font);
+  width: -webkit-fill-available;
   cursor: grab;
-  padding: 0 0.2rem 0 0.2rem;
+  padding:  1rem 2rem;
+  border: 1px solid black;
 
   &:hover svg {
     transform: rotate(-20deg);
@@ -31,15 +51,15 @@ const ElementButton = styled.div<{ $active: boolean; $visible: boolean }>`
     align-self: center;
   }
 
-  background-color: transparent;
-  border: none;
+  background-color: var(--bg);
 
   ${(props) =>
     props.$active &&
     `
     background-color: var(--onDrag);
+    transition: background-color 0.4s;
     color: var(--onDrag);
-    border: 2px solid var(--text-title);
+    border: 0.23rem solid var(--text-title);
     
     `}
 
@@ -58,10 +78,12 @@ type DndControllerProps = {
 };
 
 const DndController = ({ visible, items }: DndControllerProps) => {
-  const ItemStructure = (item: string, active: boolean) => {
+  const ItemStructure = (item: string, active: boolean, index: number) => {
     return (
       <ElementButton $active={active} $visible={visible}>
-        {active ? <HandIndex /> : <HandIndexThumb />}
+        {index === 0 && <p>ACTIVE THEME </p>}
+        {index === 0 ? null : active ? <HandIndex /> : <HandIndexThumb />}
+
         <p className="dnd-controller">{item}</p>
       </ElementButton>
     );
@@ -84,12 +106,11 @@ const DndController = ({ visible, items }: DndControllerProps) => {
                     }`}
                     style={{
                       ...provided.draggableProps.style,
-                      // This ensures the item keeps its coordinates while dragging
                       left: "auto",
                       top: "auto",
                     }}
                   >
-                    {ItemStructure(item.label, snapshot.isDragging)}
+                    {ItemStructure(item.label, snapshot.isDragging, index)}
                   </div>
                 )}
               </Draggable>
@@ -106,10 +127,10 @@ const HandIndex = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="1rem"
-      height="1rem"
+      width="2rem"
+      height="2rem"
       fill="var(--color-text-normal)"
-      className="bi bi-hand-index fill-[var(--svg-main)] -rotate-20"
+      className="bi bi-hand-index fill-[var(--button-color)] -rotate-20"
       viewBox="0 0 16 16"
     >
       <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025" />
@@ -121,10 +142,10 @@ const HandIndexThumb = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="2rem"
-      height="2rem"
+      width="2.5rem"
+      height="2.5rem"
       fill="var(--color-text-normal)"
-      className="bi bi-hand-index-thumb fill-[var(--svg-main)]"
+      className="bi bi-hand-index-thumb fill-[var(--button-color)]"
       viewBox="0 0 16 16"
     >
       <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025" />

@@ -1,218 +1,339 @@
+import { useRef } from "react";
+import styled, { keyframes } from "styled-components";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+// Components
 import Navbar from "../components/NavBar/Navbar";
-import styled from "styled-components";
 import ContactList from "../components/ContactList/ContactList";
-import { useEffect } from "react";
+import scrollerData from "../shared/json/scollerData.json";
+
+
+const float = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+`;
+
+const wave = keyframes`
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); } 
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); } 
+  100% { transform: rotate(0deg); }
+`;
+
+const textCycle = keyframes`
+  0% { transform: translateY(0%); }
+  20% { transform: translateY(-17%); }
+  40%{ transform: translateY(-35%); }
+  60% { transform: translateY(-50%); }
+  80% { transform: translateY(-64%); }
+  100% { transform: translateY(-83%); }
+`;
+
 
 const PageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const PageCards = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  margin-top: 7.5rem;
-  width: 100dvw;
-  height: calc(100vh - 105px);
-
-  overflow-x: hidden;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-
-  > div {
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    aspect-ratio: 2/1;
-  }
+  background-color: var(--bg);
+  color: var(--text-main);
+  min-height: 100vh;
 `;
 
-const IntroCard = styled.div`
+const ContentWrapper = styled.div`
+  padding-top: 6rem;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  align-self: center;
-  justify-content: start;
-  width: 80rem;
-  padding: 0 2rem 1rem 2rem;
+  align-items: center;
   gap: 5rem;
-  margin-bottom: 2rem;
 `;
 
-const AboutCard = styled(IntroCard)`
-  padding: 1rem 2rem 1rem 2rem;
-`;
-
-const ExperienceCard = styled(IntroCard)``;
-
-const BlogUpComing = styled(IntroCard)``;
-
-const FooterCard = styled(IntroCard)`
-  > div > h1 {
-    font-size: 2rem;
-  }
-  flex-direction: row;
-  padding: 5rem;
-`;
-
-const TextChanger = styled.div`
+const IntroSection = styled.section`
+  min-height: 85vh;
+  width: 90%;
+  max-width: 1200px;
   display: flex;
-  flex-direction: column-reverse;
-  height: fit-content;
-`;
-
-const EndText = styled.h1`
-  font-size: var(--h1-font);
-`;
-
-const RolesContainers = styled.div`
-  height: calc(var(--h1-font) + 1rem);
-  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
 `;
 
-const ItemText = styled.h1`
+const TextRotatorContainer = styled.div`
+  height: clamp(3rem, 6vw, 5rem);
+  overflow: hidden;
+  margin-bottom: 1rem;
+`;
+
+const RollingText = styled.div`
+  animation: ${textCycle} 10s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  h2 {
+    font-family: var(--font-title);
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1;
+    color: var(--text-changer);
+    opacity: 0.7;
+    margin: 0;
+  }
+`;
+
+const MainTitle = styled.h1`
   font-size: var(--h1-font);
-  display: block;
-  height: 100%;
-  color: var(--text-changer);
-  animation: TextChanger 11s infinite;
+  color: var(--text-title);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+`;
 
-  @keyframes TextChanger {
-    10% {
-      transform: translateY(-100%);
+const BioBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--outline);
+  padding-top: 2rem;
+  gap: 2rem;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 600px;
+    color: var(--text-p);
+    line-height: 1.6;
+  }
+  .details {
+    text-align: left;
+    @media (min-width: 768px) {
+      text-align: right;
     }
-    
-    20% {
-      transform: translateY(-200%);
+    h3 {
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      color: var(--text-title);
     }
+  }
+`;
 
-    60% {
-      transform: translateY(-300%);
-    }
+const HorizontalScrollSection = styled.section`
+  height: 400vh;
+  width: 100%;
+  position: relative;
+`;
 
-    80% {
-      transform: translateY(-400%);
-    }
-    
-    100% {
-      transform: translateY(-500%);
-    }
+const StickyFrame = styled.div`
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  overflow: hidden;
+  background-color: var(--bg-light);
+`;
 
+const ScrollTrack = styled(motion.div)`
+  display: flex;
+  gap: 4rem;
+  padding-left: 25vw;
+  width: max-content;
+`;
+
+const InfoCard = styled.div`
+  width: 70vw;
+  max-width: 700px;
+  height: 60vh;
+  background: var(--bg-dark);
+  border: 2px solid var(--outline);
+  border-radius: var(--rounded);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.17);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-family: var(--font-title);
+    color: var(--outline);
+  }
+
+  h3 {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: --p-font;
+    color: var(--text-changer);
+    line-height: 1.6;
+
+    strong {
+      color: var(--button);
+    }
+  }
+`;
+
+const Section = styled.section`
+  width: 90%;
+  max-width: 1000px;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const BlogCard = styled.div`
+  border: 2px dashed var(--outline);
+  border-radius: var(--rounded);
+  padding: 4rem;
+  text-align: center;
+  width: 100%;
+  background: var(--bg-dark);
+  animation: ${float} 3s ease-in-out infinite;
+  h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    span {
+      color: var(--hov-button);
+    }
+  }
+`;
+
+const Footer = styled.footer`
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 5rem;
+  .wave-hand {
+    font-size: 5rem;
+    display: inline-block;
+    animation: ${wave} 2.5s infinite;
+    transform-origin: 70% 70%;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 2rem;
+  }
+  a {
+    font-family: var(--font-main);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border: 1px solid var(--button);
+    border-radius: var(--rounded);
+    transition: all 0.3s ease;
+    &:hover {
+      background: var(--button);
+      color: var(--button-color);
+    }
+  }
 `;
 
 const HomePage = () => {
-  // ::selection get rid of it if user lets go.
-  useEffect(() => {
-    const clear = () => window.getSelection()?.removeAllRanges();
+  const targetRef = useRef<HTMLDivElement>(null);
 
-    document.addEventListener("mouseup", clear);
-    document.addEventListener("touchend", clear);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start start", "end end"],
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
-    return () => {
-      document.removeEventListener("mouseup", clear);
-      document.removeEventListener("touchend", clear);
-    };
-  }, []);
   return (
     <PageContainer>
-      {/*Nav Bar Component*/}
       <Navbar />
-
-      {/*Contact List Component*/}
       <ContactList />
 
-      {/*Homepage each Card are sections*/}
-      <PageCards>
-        {/*First Card - Welcome page*/}
-        <IntroCard>
-          <TextChanger>
-            <EndText>Welcome to my space!</EndText>
-            <RolesContainers>
-              <ItemText>Hola</ItemText>
-              <ItemText>Hello</ItemText>
-              <ItemText>Merhaba</ItemText>
-              <ItemText>Bon Jour</ItemText>
-              <ItemText>Hallo</ItemText>
-              <ItemText>Ni Hao</ItemText>
-            </RolesContainers>
-          </TextChanger>
-          <div className="text-end flex justify-between items-center">
-            <div className="text-left">
-              <span className="">
-                <h2>Software Engineer</h2>
-                <p>My name is Keven Quevedo, currently based in Berlin</p>
-              </span>
+      <ContentWrapper>
+        <IntroSection>
+          <TextRotatorContainer>
+            <RollingText>
+              {["Hola", "Hello", "Merhaba", "Bon Jour", "Hallo", "Ni Hao"].map(
+                (txt, i) => (
+                  <h2 key={i}>{txt}</h2>
+                )
+              )}
+            </RollingText>
+          </TextRotatorContainer>
 
-              <button className="button mt-5">Learn more</button>
-            </div>
-            <p>
-              Ecuadorian,
-              <br />
-              2005
-            </p>
-          </div>
-        </IntroCard>
+          <MainTitle>Welcome to Keven's Tech Space</MainTitle>
 
-        {/*Second Card - Small description page*/}
-        <AboutCard>
-          <h1 className="text-[4rem]">Creative Coder</h1>
-          <span className="text-start block ml-14 text-[1.3rem]">
-            <p>
-              My hope is that when people look at my code it doesn't feel
-              generic.
-              <br />
-              Instead, inspire creative responsive design. I am really diving
-              deep into Website Development, focusing on clean coding and
-              responsiveness. <br />
-              <span className="block mt-10">
-                My next step - Application Development for Mobiles first.
-              </span>
-            </p>
-          </span>
-        </AboutCard>
-
-        {/*Third Card - undefined still*/}
-        <ExperienceCard>
-          <h1 className="">
-            Hola,
-            <br /> Welcome to my space!
-          </h1>
-          <span className="text-end">
-            <p>2005 Ecuadorian</p>
-          </span>
-        </ExperienceCard>
-
-        {/*Four Card - Access to Blog upcoming*/}
-        <BlogUpComing>
-          <div className="flex flex-col w-[60rem] border-2 p-[1rem]">
+          <BioBox>
             <div>
-              <h1 className="text-[2rem]">
-                Working on a Blog Project <span>SOON</span>
-              </h1>
-              <p>I will be updating new ideas that I am learning and using.</p>
+              <p>
+                My name is <strong>Keven Quevedo</strong>. Full-stack
+                development intern at <strong>Juvigo</strong>.
+                <br />
+                <br />
+                Currently based in <strong>Berlin</strong>, I blend creativity
+                and modern design together.
+              </p>
             </div>
-            <div></div>
-          </div>
-        </BlogUpComing>
+            <div className="details">
+              <h3>20 Years Old</h3>
+              <h3>Ecuadorian</h3>
+            </div>
+          </BioBox>
+        </IntroSection>
+        <HorizontalScrollSection ref={targetRef}>
+          <StickyFrame>
+            <ScrollTrack style={{ x }}>
+              {/* Mapping JSON Data */}
+              {scrollerData.cards.map(
+                (
+                  card,
+                  index // make to item
+                ) => (
+                  // once wokring
+                  <InfoCard key={index}>
+                    <div>
+                      <h2>{card.content["main-title"]}</h2>
+                      {card.content["second-title"] && (
+                        <h3>{card.content["second-title"]}</h3>
+                      )}
+                    </div>
+                    <p
+                      dangerouslySetInnerHTML={{ __html: card.content.text }}
+                    />
+                  </InfoCard>
+                )
+              )}
+            </ScrollTrack>
+          </StickyFrame>
+        </HorizontalScrollSection>
 
-        {/*Five Card - Footer / Get in touch page*/}
-        <FooterCard>
-          <div className="border-2">
-            <h1>Thank you for Checking out me Website!</h1>
-            <h2>Lets get in touch - my Email</h2>
-            <h3>Kevenjq07@gmail.com</h3>
-          </div>
-          <div className="border-2">
-            {/*
-          Here I could maybe add a animation of some sort
-          - plane
-          - train
-          - - depending on theme maybe too
-
-          */}
-            <h1>upcoming animation..</h1>
-          </div>
-        </FooterCard>
-      </PageCards>
+        <Section>
+          <BlogCard>
+            <h1>
+              Writing a Blog <br />
+              <span>SOON</span>
+            </h1>
+            <p>A space to document my learning curve in Tech.</p>
+          </BlogCard>
+        </Section>
+        {/* change hand yes or yes */}
+        <Footer> 
+          <span className="wave-hand">👋</span>
+          <h2>Thank you for visiting!</h2>
+          <p style={{ marginBottom: "2rem", maxWidth: "400px" }}>
+            Check out the different themes in the Navbar before you go.
+          </p>
+          <a href="mailto:Kevenjq07@gmail.com" target="_blank">Let's Connect</a>
+        </Footer>
+      </ContentWrapper>
     </PageContainer>
   );
 };

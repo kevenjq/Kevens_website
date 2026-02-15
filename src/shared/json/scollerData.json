@@ -1,0 +1,71 @@
+{
+    "cards": [
+    {
+        "type": "first-card",
+        "active": "true",
+        
+        "content": 
+        {
+            "main-title": "Creative Coder",
+            "second-title": "",
+            "text": "I don't just write code, I craft experiences. My goal is to break generic layouts and build responsive interactive webs that feel alive. <br /><br />Currently focusing on <strong>React.ts</strong> and Java SpringBoot.",
+            "button": "false"
+        }
+    },
+    {
+        "type": "second-card",
+        "active": "true",
+        "content": 
+        {
+            "main-title": "Global Citizen",
+            "second-title": "",
+            "text": "I grew up in <strong>China</strong>, finished high school in<strong>London</strong>, and now I'm finishing my Bachelor'sin <strong>Berlin</strong>.<br /><br />Adapting to different cultures has taught me to adaptable in my code and communication.",
+            "button": "false"
+        }
+    },
+    {
+        "type": "third-card",
+        "active": "true",
+        "content": 
+        {
+            "main-title": "The Foundation",
+            "second-title": "Game Dev Roots / Web dev",
+            "text": "My journey began in Year 8 with <strong>Unity & C#</strong>. I dabbled in Blender to create game assets, which sparked my love for visual coding.<br /><br />This transitioned into Python application development (Kivy) and facial recognition projects.",
+            "button": "false"
+        }
+    },
+    {
+        "type": "four-card",
+        "active": "true",
+        "content": 
+        {
+            "main-title": "The Foundation",
+            "second-title": "Game Dev Roots / Web dev",
+            "text": "My journey began in Year 8 with <strong>Unity & C#</strong>. I dabbled in Blender to create game assets, which sparked my love for visual coding.<br /><br />This transitioned into Python application development (Kivy) and facial recognition projects.",
+            "button": "false"
+        }
+    },
+    {
+        "type": "five-card",
+        "active": "true",
+        "content": 
+        {
+            "main-title": "The Stack",
+            "second-title": "Web & Beyond",
+            "text": "I moved from the MERN stack to a strictly typed <strong>React.ts</strong> frontend. <br /><br />Backend? I'm diving deep into Java. Next stop: <strong>Mobile Application Development</strong>.",
+            "button": "false"
+        }
+    },
+    {
+        "type": "six-card",
+        "active": "true",
+        "content": 
+        {
+            "main-title": "More Projects on its Wayy",
+            "second-title": "Mobile App Dev",
+            "text": "I am working on many project and work. Nevertheless, I dedicate time for my own projects that I hope to release soon and continue learning more through them",
+            "button": "false"
+        }
+    }
+    ]
+}

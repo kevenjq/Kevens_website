@@ -75,7 +75,7 @@ const CVsvg = () => {
       xmlns="http://www.w3.org/2000/svg"
       width="2rem"
       height="2rem"
-      fill="currentColor"
+      fill="var(--svg-main)"
       className="bi bi-file-earmark-person-fill"
       viewBox="0 0 16 16"
     >
@@ -90,7 +90,7 @@ function instaSvg() {
       xmlns="http://www.w3.org/2000/svg"
       width="2rem"
       height="2rem"
-      fill="currentColor"
+      fill="var(--svg-main)"
       className="bi bi-instagram"
       viewBox="0 0 16 16"
     >
@@ -105,7 +105,7 @@ function linkedInSvg() {
       xmlns="http://www.w3.org/2000/svg"
       width="2rem"
       height="2rem"
-      fill="currentColor"
+      fill="var(--svg-main)"
       className="bi bi-linkedin"
       viewBox="0 0 16 16"
     >
@@ -120,7 +120,7 @@ function githubSvg() {
       xmlns="http://www.w3.org/2000/svg"
       width="2rem"
       height="2rem"
-      fill="currentColor"
+      fill="var(--svg-main)"
       className="bi bi-github"
       viewBox="0 0 16 16"
     >

@@ -10,7 +10,7 @@
 @import "tailwindcss";
 
 /* ============================
-   Base setup (do not change)
+   Base setup
    ============================ */
 :root {
     --bg: #2c2d2c;
@@ -49,7 +49,7 @@ html {
 /* sm – large phones */
 @media (min-width: 480px) {
     html {
-        font-size: 7px;
+        font-size: 8px;
     }
 }
 
@@ -90,40 +90,42 @@ html {
     --text-muted: #b7b7b7;
     --text-changer: #eeeeee;
     --text-p: #2f3435;
-
     --body-items-color: #cccccb;
 
+    --svg-main: #9474d7;
     --onDrag: #e9f23e;
     --outline: #ffb004;
     --hovering: #4a624b;
 
     --button: #d98250;
     --hov-button: #c1ad1a;
-    --button-color: #8a0a0a;
+    --button-color: #000000;
 
     --rounded: 20px;
-    --h1-font: 7rem;
+    --h1-font: clamp(2.5rem, 4vw, 8rem);
+    --p-font: clamp(1rem, 3vw, 2rem);
 }
 
 /* ============================
    THEME 2
    ============================ */
 .medieval-theme {
-    --bg: #f8efe6;
+    --bg: #847668;
     --bg-light: #fff6e9;
-    --bg-dark: #442e18;
+    --bg-dark: #613509;
 
     --font-title: "Gabriela", serif;
     --font-main: "Macondo", cursive;
-    --text-main: #4b3d3d;
-    --text-title: #2c1e1e;
-    --text-changer: #373838;
-    --text-p: #000000;
-    --body-items-color: #cccccb;
+    --text-main: #747070;
+    --text-title: #dab44c;
+    --text-muted: #b7b7b7;
+    --text-changer: #b0a89c;
+    --text-p: #351913;
+    --body-items-color: #ffffff;
 
-    --svg-main: #4b3d3d;
+    --svg-main: #c2c28d;
     --onDrag: #fff6e9;
-    --outline: #464646;
+    --outline: #d1d1d1;
     --hovering: #c1b6ac;
 
     --button: #c5bc9b;
@@ -131,7 +133,8 @@ html {
     --button-color: #262626;
 
     --rounded: 12px;
-    --h1-font: 7rem;
+    --h1-font: clamp(2.5rem, 4vw, 8rem);
+    --p-font: clamp(1rem, 4vw, 2rem);
 }
 
 /* ============================
@@ -139,7 +142,7 @@ html {
    ============================ */
 .futuro-theme {
     --bg: #7397a4;
-    --bg-light: #154454;
+    --bg-light: #7cc4dc;
     --bg-dark: #082028;
 
     --font-title: "BBH Bartle", sans-serif;
@@ -151,6 +154,7 @@ html {
     --text-p: #313a3c;
     --body-items-color: #cccccb;
 
+    --svg-main: #d3d3d3;
     --onDrag: #ffffff;
     --outline: #edffbc;
     --hovering: #3e7f96;
@@ -160,7 +164,8 @@ html {
     --button-color: #000000;
 
     --rounded: 5px;
-    --h1-font: 6rem;
+    --h1-font: clamp(2.5rem, 4vw, 8rem);
+    --p-font: clamp(0.5rem, 2vw, 2rem);
 }
 
 /* ============================
@@ -168,11 +173,34 @@ html {
    ============================ */
 body {
     /* user-select: none; */
-    
+    overflow-x: hidden;
     background-color: var(--bg);
     color: var(--body-items-color);
     /* transition: background-color 0.5s ease, color 0.3s ease; */
+}
 
+/* 1. The width of the entire scrollbar */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 12px;
+}
+
+/* 2. The track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+    border-radius: 0px;
+}
+
+/* 3. The thumb (the part you actually grab/drag) */
+::-webkit-scrollbar-thumb {
+    background: var(--text-main);
+    border-radius: var(--rounded);
+    border: 3px solid var(--bg-dark);
+}
+
+/* 4. The thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--outline);
 }
 
 ::selection {
@@ -184,6 +212,7 @@ h1{
     color: var(--text-title);
     transition: color 0.3s ease, color 0.3s ease;
     font-family: var(--font-title);
+    font-size: var(--h1-font);
 }
 
 h2,
