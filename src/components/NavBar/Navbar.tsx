@@ -43,8 +43,8 @@ const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const [items, setItems] = useState<ThemeItem[]>([
     { id: "1", label: "Futuro", themeKey: "futuro-theme" },
-    { id: "2", label: "idk", themeKey: "animal-theme" },
-    { id: "3", label: "Medieval", themeKey: "medieval-theme" },
+    { id: "2", label: "fun...", themeKey: "animal-theme" },
+    { id: "3", label: "Medieval Modern", themeKey: "medieval-theme" },
   ]);
 
   const [currentTheme, setCurrentTheme] = useState(items[0].themeKey);
@@ -104,7 +104,7 @@ const Navbar = () => {
       xmlns="http://www.w3.org/2000/svg"
       width="4rem"
       height="4rem"
-      fill="var(--body-items-color)"
+      fill="black"
       className="bi bi-sliders p-3"
       viewBox="0 0 16 16"
     >
@@ -121,7 +121,7 @@ const Navbar = () => {
       xmlns="http://www.w3.org/2000/svg"
       width="5rem"
       height="5rem"
-      fill="var(--body-items-color)"
+      fill="black"
       className="bi bi-x p-3"
       viewBox="0 0 16 16"
     >

@@ -398,11 +398,10 @@ const HomePage = () => {
               years ago, and now full stack development intern. I've done many
               projects to learn, to understand and to further develop my skills
               in tech. I'm always intrigued to understand, to create and deeply
-              curious about finding the best pizza.
+              curious new tech!
             </p>
           </AboutCard>
         </Section>
-        {/* change hand yes or yes */}
         <Footer>
           <span className="wave-hand">
             <span className=" text-[3rem]">👋</span>🤠
@@ -410,14 +409,21 @@ const HomePage = () => {
           <h2>Thank you for visiting!</h2>
           {/* as an text typer animation try */}
           <p style={{ marginBottom: "2rem", maxWidth: "400px" }}>
-            Check out the different themes in the Navbar before you go.
+            Check out the different themes options on the Navbar's right, before
+            you go.
+            <br />
+            <br /> Tried to make them all based on the theme!
           </p>
           <a href="mailto:Kevenjq07@gmail.com" target="_blank">
             Let's Connect
           </a>
           <p style={{ marginTop: "2rem", maxWidth: "400px" }}>
             Made by yours truly
-            <strong className="text-[1.3rem]"> Keven Quevedo</strong>.
+            <strong className="text-[1.3rem]"> Keven Quevedo </strong>
+            <br />
+            <span className="text-[0.9rem]">
+              2026 <strong>∞</strong>
+            </span>
           </p>
         </Footer>
       </ContentWrapper>
