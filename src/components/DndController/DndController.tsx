@@ -51,7 +51,9 @@ const ElementButton = styled.div<{ $active: boolean; $visible: boolean }>`
     align-self: center;
   }
 
-  background-color: var(--bg);
+  background-color: background: rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(20.5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 
   ${(props) =>
     props.$active &&

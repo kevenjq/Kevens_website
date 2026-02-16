@@ -1,71 +1,64 @@
 {
-    "cards": [
+  "cards": [
     {
-        "type": "first-card",
-        "active": "true",
-        
-        "content": 
-        {
-            "main-title": "Creative Coder",
-            "second-title": "",
-            "text": "I don't just write code, I craft experiences. My goal is to break generic layouts and build responsive interactive webs that feel alive. <br /><br />Currently focusing on <strong>React.ts</strong> and Java SpringBoot.",
-            "button": "false"
-        }
+      "type": "first-card",
+      "active": "true",
+      "content": {
+        "main-title": "Creative Engineer",
+        "second-title": "",
+        "text": "I don't just build interfaces — I design digital experiences. My work focuses on creating responsive, interactive web applications that feel intentional and alive. <br /><br />Currently specializing in <strong>React + TypeScript</strong> on the frontend and <strong>Java Spring Boot</strong> on the backend.",
+        "button": "false"
+      }
     },
     {
-        "type": "second-card",
-        "active": "true",
-        "content": 
-        {
-            "main-title": "Global Citizen",
-            "second-title": "",
-            "text": "I grew up in <strong>China</strong>, finished high school in<strong>London</strong>, and now I'm finishing my Bachelor'sin <strong>Berlin</strong>.<br /><br />Adapting to different cultures has taught me to adaptable in my code and communication.",
-            "button": "false"
-        }
+      "type": "second-card",
+      "active": "true",
+      "content": {
+        "main-title": "International Perspective",
+        "second-title": "",
+        "text": "Having lived and studied across multiple countries, I’ve developed a global mindset that influences both my collaboration style and technical decisions. <br /><br />Currently based in <strong>Berlin</strong>, completing my Bachelor's in Software Engineering.",
+        "button": "false"
+      }
     },
     {
-        "type": "third-card",
-        "active": "true",
-        "content": 
-        {
-            "main-title": "The Foundation",
-            "second-title": "Game Dev Roots / Web dev",
-            "text": "My journey began in Year 8 with <strong>Unity & C#</strong>. I dabbled in Blender to create game assets, which sparked my love for visual coding.<br /><br />This transitioned into Python application development (Kivy) and facial recognition projects.",
-            "button": "false"
-        }
+      "type": "third-card",
+      "active": "true",
+      "content": {
+        "main-title": "Where It Started",
+        "second-title": "Game Development Roots",
+        "text": "My journey began with <strong>Unity & C#</strong>, where I learned to think visually and architect interactive systems. Working with <strong>Blender</strong> strengthened my design awareness and appreciation for detail. <br /><br />This early exposure shaped the way I approach frontend architecture today — combining logic with visual storytelling.",
+        "button": "false"
+      }
     },
     {
-        "type": "four-card",
-        "active": "true",
-        "content": 
-        {
-            "main-title": "The Foundation",
-            "second-title": "Game Dev Roots / Web dev",
-            "text": "My journey began in Year 8 with <strong>Unity & C#</strong>. I dabbled in Blender to create game assets, which sparked my love for visual coding.<br /><br />This transitioned into Python application development (Kivy) and facial recognition projects.",
-            "button": "false"
-        }
+      "type": "four-card",
+      "active": "true",
+      "content": {
+        "main-title": "Applied Problem Solving",
+        "second-title": "From Python to Production",
+        "text": "I explored <strong>Python application development</strong> (Kivy) and experimented with projects such as facial recognition systems. <br /><br />These experiences taught me how to move from concept to implementation while maintaining clean, maintainable code.",
+        "button": "false"
+      }
     },
     {
-        "type": "five-card",
-        "active": "true",
-        "content": 
-        {
-            "main-title": "The Stack",
-            "second-title": "Web & Beyond",
-            "text": "I moved from the MERN stack to a strictly typed <strong>React.ts</strong> frontend. <br /><br />Backend? I'm diving deep into Java. Next stop: <strong>Mobile Application Development</strong>.",
-            "button": "false"
-        }
+      "type": "five-card",
+      "active": "true",
+      "content": {
+        "main-title": "Current Focus",
+        "second-title": "Modern Web Architecture",
+        "text": "I transitioned from the MERN stack toward a strongly typed <strong>React + TypeScript</strong> frontend architecture. <br /><br />On the backend, I am diving deeper into <strong>Java</strong> and scalable system design principles.",
+        "button": "false"
+      }
     },
     {
-        "type": "six-card",
-        "active": "true",
-        "content": 
-        {
-            "main-title": "More Projects on its Wayy",
-            "second-title": "Mobile App Dev",
-            "text": "I am working on many project and work. Nevertheless, I dedicate time for my own projects that I hope to release soon and continue learning more through them",
-            "button": "false"
-        }
+      "type": "six-card",
+      "active": "true",
+      "content": {
+        "main-title": "Next Chapter",
+        "second-title": "Mobile Application Development",
+        "text": "My next step is mobile-first application development. I am building personal projects to expand into cross-platform and native mobile systems while continuing to refine my understanding of clean architecture and responsive design.",
+        "button": "false"
+      }
     }
-    ]
+  ]
 }

@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Coming+Soon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gabriela&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
 
 /*Default font*/
 @import url('https://fonts.googleapis.com/css2?family=Cousine&display=swap');
 
 @import "tailwindcss";
+
 
 /* ============================
    Base setup
@@ -17,8 +18,9 @@
     --bg-light: #2c2d2c;
     --bg-dark: #2c2d2c;
     
-    --font-main: "Cousine", monospace;
-
+    --font-title: "Barrio", system-ui;
+    --font-main: monospace;
+    
     --text-main: #2c2d2c;
     --text-title: #2c2d2c;
     --text-muted: #2c2d2c;
@@ -26,14 +28,18 @@
     --text-p: #2c2d2c;
     --body-items-color: #2c2d2c;
     
+    --svg-main: #2c2d2c;
     --onDrag: #d18b29;
     --outline: #2c2d2c;
     --hovering: #2c2d2c;
-
+    
     --button: #2c2d2c;
     --hov-button: #2c2d2c;
+    --button-color: #2c2d2c;
     
-    --rounded: 5px;
+    --rounded: 20px;
+    --h1-font: clamp(2.5rem, 4vw, 8rem);
+    --p-font: clamp(1rem, 3vw, 2rem);
     
 }
 
@@ -83,7 +89,7 @@ html {
     --bg-dark: #095a0e;
 
     --font-title: "Barrio", system-ui;
-    --font-main: monospace;
+    --font-main: "DynaPuff", system-ui;
 
     --text-main: #d2c4c4;
     --text-title: #323232;
@@ -92,7 +98,7 @@ html {
     --text-p: #2f3435;
     --body-items-color: #cccccb;
 
-    --svg-main: #9474d7;
+    --svg-main: #98b874;
     --onDrag: #e9f23e;
     --outline: #ffb004;
     --hovering: #4a624b;
@@ -125,7 +131,7 @@ html {
 
     --svg-main: #c2c28d;
     --onDrag: #fff6e9;
-    --outline: #d1d1d1;
+    --outline: #a4c0a7;
     --hovering: #c1b6ac;
 
     --button: #c5bc9b;

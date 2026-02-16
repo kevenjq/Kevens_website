@@ -6,12 +6,20 @@ import ContactPage from "./pages/ContactPage";
 import BlogPage from "./pages/BlogPage";
 import Gem from "./pages/Gem";
 import Fourofour from "./pages/Fourofour";
+import { ReactLenis } from "lenis/react";
 
 import OverlayTransition from "./assets/overls.svg?react";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+  }, []);
   return (
-    <>
+    <ReactLenis root>
       <div id="theme-svg-container">
         <OverlayTransition
           width="100%"
@@ -31,7 +39,7 @@ function App() {
           <Route path="/404" element={<Fourofour />} />
         </Routes>
       </Router>
-    </>
+    </ReactLenis>
   );
 }
 

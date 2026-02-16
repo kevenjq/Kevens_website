@@ -7,7 +7,6 @@ import Navbar from "../components/NavBar/Navbar";
 import ContactList from "../components/ContactList/ContactList";
 import scrollerData from "../shared/json/scollerData.json";
 
-
 const float = keyframes`
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -34,7 +33,6 @@ const textCycle = keyframes`
   100% { transform: translateY(-83%); }
 `;
 
-
 const PageContainer = styled.div`
   background-color: var(--bg);
   color: var(--text-main);
@@ -43,7 +41,6 @@ const PageContainer = styled.div`
 
 const ContentWrapper = styled.div`
   padding-top: 6rem;
-  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,9 +113,12 @@ const BioBox = styled.div`
 `;
 
 const HorizontalScrollSection = styled.section`
-  height: 400vh;
+  height: 950vh;
   width: 100%;
   position: relative;
+  @media (max-width: 768px) {
+    height: 400vh;
+  }
 `;
 
 const StickyFrame = styled.div`
@@ -135,8 +135,20 @@ const StickyFrame = styled.div`
 const ScrollTrack = styled(motion.div)`
   display: flex;
   gap: 4rem;
-  padding-left: 25vw;
+  margin-left: 5vw;
   width: max-content;
+  background: var(--bg-light);
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-flow: column;
+  }
+  p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 600px;
+    color: var(--text-p);
+    line-height: 1.6;
+  }
 `;
 
 const InfoCard = styled.div`
@@ -159,7 +171,7 @@ const InfoCard = styled.div`
   }
 
   h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1rem, 3vw, 1.8rem);
     font-family: var(--font-title);
     color: var(--outline);
   }
@@ -181,19 +193,36 @@ const InfoCard = styled.div`
       color: var(--button);
     }
   }
+
+  @media (max-width: 768px) {
+    width: 80vw;
+    height: 20vh;
+    padding: 2rem;
+  }
 `;
 
 const Section = styled.section`
   width: 90%;
-  max-width: 1000px;
-  min-height: 60vh;
+  max-width: 1300px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    min-height: 0vh;
+    width: 50%;
+    max-width: 900px;
+  }
 `;
 
 const BlogCard = styled.div`
-  border: 2px dashed var(--outline);
+  border: 2px solid var(--outline);
   border-radius: var(--rounded);
   padding: 4rem;
   text-align: center;
@@ -206,16 +235,46 @@ const BlogCard = styled.div`
       color: var(--hov-button);
     }
   }
+  p {
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 5rem;
+  }
+`;
+
+const AboutCard = styled.div`
+  padding: 2rem;
+  text-align: justify;
+  width: 100%;
+  animation: ${float} 3s ease-in-out infinite;
+
+  h1 {
+    text-align: start;
+    color: var(--bg-dark);
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+  p {
+    color: var(--text-main);
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 5rem;
+  }
 `;
 
 const Footer = styled.footer`
-  min-height: 50vh;
+  position: relative;
+  z-index: 5;
+  background-color: var(--bg-light);
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-bottom: 5rem;
   .wave-hand {
     font-size: 5rem;
     display: inline-block;
@@ -230,7 +289,7 @@ const Footer = styled.footer`
   a {
     font-family: var(--font-main);
     font-size: clamp(1rem, 3vw, 1.5rem);
-    color: var(--text-muted);
+    color: var(--outline);
     text-decoration: none;
     padding: 1rem 2rem;
     border: 1px solid var(--button);
@@ -255,8 +314,9 @@ const HomePage = () => {
   return (
     <PageContainer>
       <Navbar />
+      {/* Side bar for contacts */}
       <ContactList />
-
+      {/* Different Blocks */}
       <ContentWrapper>
         <IntroSection>
           <TextRotatorContainer>
@@ -274,8 +334,8 @@ const HomePage = () => {
           <BioBox>
             <div>
               <p>
-                My name is <strong>Keven Quevedo</strong>. Full-stack
-                development intern at <strong>Juvigo</strong>.
+                My name is <strong>Keven Quevedo</strong>.<br />
+                Full-Stack Development Intern.
                 <br />
                 <br />
                 Currently based in <strong>Berlin</strong>, I blend creativity
@@ -283,13 +343,16 @@ const HomePage = () => {
               </p>
             </div>
             <div className="details">
-              <h3>20 Years Old</h3>
+              <h3>20 years old</h3>
               <h3>Ecuadorian</h3>
             </div>
           </BioBox>
         </IntroSection>
         <HorizontalScrollSection ref={targetRef}>
           <StickyFrame>
+            <div className="p-11">
+              <h1>Explore...</h1>
+            </div>
             <ScrollTrack style={{ x }}>
               {/* Mapping JSON Data */}
               {scrollerData.cards.map(
@@ -314,7 +377,12 @@ const HomePage = () => {
             </ScrollTrack>
           </StickyFrame>
         </HorizontalScrollSection>
-
+        {/* 
+        I want ot add a section here 
+        either an about or interactive click to open
+        and read more so its just header tabs at first 
+        glance and more info after open type element.
+        */}
         <Section>
           <BlogCard>
             <h1>
@@ -323,15 +391,34 @@ const HomePage = () => {
             </h1>
             <p>A space to document my learning curve in Tech.</p>
           </BlogCard>
+          <AboutCard>
+            <h1>a little about me</h1>
+            <p>
+              Since beginning my journey as a software engineer enthusiastic 6
+              years ago, and now full stack development intern. I've done many
+              projects to learn, to understand and to further develop my skills
+              in tech. I'm always intrigued to understand, to create and deeply
+              curious about finding the best pizza.
+            </p>
+          </AboutCard>
         </Section>
         {/* change hand yes or yes */}
-        <Footer> 
-          <span className="wave-hand">👋</span>
+        <Footer>
+          <span className="wave-hand">
+            <span className=" text-[3rem]">👋</span>🤠
+          </span>
           <h2>Thank you for visiting!</h2>
+          {/* as an text typer animation try */}
           <p style={{ marginBottom: "2rem", maxWidth: "400px" }}>
             Check out the different themes in the Navbar before you go.
           </p>
-          <a href="mailto:Kevenjq07@gmail.com" target="_blank">Let's Connect</a>
+          <a href="mailto:Kevenjq07@gmail.com" target="_blank">
+            Let's Connect
+          </a>
+          <p style={{ marginTop: "2rem", maxWidth: "400px" }}>
+            Made by yours truly
+            <strong className="text-[1.3rem]"> Keven Quevedo</strong>.
+          </p>
         </Footer>
       </ContentWrapper>
     </PageContainer>
